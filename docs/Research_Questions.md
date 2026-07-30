@@ -13,10 +13,13 @@
 
 ## Internationalisation
 
-- How internationalised are Kazakhstan's universities?
-- Which universities attract international students?
-- Which countries are the major partners?
-- What mobility trends exist?
+- How many international students study in Kazakhstan?
+- Where do they come from?
+- Where do Kazakh students study abroad?
+- Which countries are Kazakhstan's major education partners?
+- How has mobility changed over time?
+- What demographic and migration trends may influence future student mobility?
+- How competitive is Kazakhstan as an international education destination?
 
 ---
 
