@@ -41,3 +41,7 @@ data/processed/*
 !data/raw/.gitkeep
 !data/interim/.gitkeep
 !data/processed/.gitkeep
+
+.venv/
+__pycache__/
+*.pyc
