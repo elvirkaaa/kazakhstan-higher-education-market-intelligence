@@ -163,3 +163,53 @@ Detailed description of each source used in WP2 — what it provides, its streng
 - Geographic map component required visual transcription (higher error risk, documented per-row)
 - Contains an internal self-contradiction on the CIS-vs-Asia claim
 - India's student count (9,969) conflicts with the National Report 2024 figure (12,020) - unresolved
+
+---
+
+## WP3 – Demographic Analysis
+
+### Bureau of National Statistics (BNS)
+
+**Purpose:** Primary source for Kazakhstan's own official demographic statistics — births, deaths, natural population growth, external and interregional migration, and regional age structure.
+
+**Strengths:**
+- Official national statistics agency, published directly in English
+- Regional (oblast-level) breakdown available for most tables, 2000-2025
+- Covers both external (international) and interregional (internal) migration separately
+
+**Limitations:**
+- Regional population time series not yet obtained — only a single snapshot (beginning of 2024) for regional age structure has been processed so far
+- Several source files use Cyrillic look-alike characters in place of Latin letters in region names (the same character-encoding issue documented in the WP1 OPVO registry) — normalised during processing, but any newly added BNS file should be checked for this
+- Newer regions (Abay, Zhetisu, Ulytau, created via 2022 territorial splits) show blank/dash data before their creation date across all BNS tables
+- The interregional migration file does not state its reference year explicitly on the sheet — inferred from file metadata, not confirmed
+
+### UN World Population Prospects (UN WPP)
+
+**Purpose:** Provides internationally standardised population projections (to 2050/2100) with confidence variants, plus current age structure.
+
+**Strengths:**
+- Only source in this project providing forward-looking projections with a stated methodology (medium-fertility variant)
+- Internationally comparable methodology, useful for benchmarking against other countries
+
+**Limitations:**
+- Projection data currently in this project was transcribed from a Worldometer screenshot (itself an elaboration of UN WPP 2024 Revision data), not downloaded directly from population.un.org — a direct download would be more authoritative and would add dependency-ratio and future age-group data not yet available
+- Age structure data (2025) is a single-year snapshot only; no age-group time series yet
+- Dependency ratio not yet sourced
+
+### World Bank Open Data
+
+**Purpose:** International comparator source for population growth, urbanisation, and fertility indicators.
+
+**Strengths:**
+- Long, consistent time series (1960-2025)
+- Enables cross-country comparison if needed later
+- Simple, well-documented indicator codes
+
+**Limitations:**
+- Currently only the population total and population growth rate indicators have been obtained; urbanisation (SP.URB.TOTL.IN.ZS) and fertility (SP.DYN.TFRT.IN) indicators are still needed
+- National-level only — no regional breakdown (regional detail must come from BNS)
+
+### Cross-cutting note
+
+Region names are not yet standardised across BNS, and any future sources (UN WPP, World Bank sub-national data) — e.g. "Batys Kazakhstan" (BNS/Kazakh transliteration) vs. "West Kazakhstan" (English). A region-name crosswalk should be built before regional data from multiple sources is merged for analysis or visualisation.
+

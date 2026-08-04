@@ -25,9 +25,12 @@
 
 ## Demographic Context
 
-- Which demographic trends influence future enrolment?
-- Which regions have growing youth populations?
-- How does migration affect demand?
+- How has Kazakhstan's population changed since 1990?
+- What are future population projections?
+- How is the youth population changing?
+- Which regions are growing and which are shrinking?
+- How does migration influence higher education demand?
+- What implications does this have for universities?
 
 ---
 

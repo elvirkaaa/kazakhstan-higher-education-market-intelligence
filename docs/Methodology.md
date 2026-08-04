@@ -151,7 +151,33 @@ Some datasets may differ in:
 These limitations are documented whenever relevant.
 
 ---
+---
 
-Status
+## WP3 – Demographic Analysis
 
-Living document.
+### Research Design
+
+WP3 follows the same evidence-first approach as WP1 and WP2: every dataset is documented and verified before use. Given this work package draws on three distinct official sources (BNS, UN WPP, World Bank) covering overlapping metrics (e.g. population growth appears in both BNS and World Bank data), cross-source verification is a required step before any figure is finalised, following the same method used in WP2 (see WP2's Kyrgyzstan/India cross-checks for the template).
+
+### Data Sources
+
+See the WP3 section of `Data_Sources.md` for full detail. In summary: BNS (national demographic statistics), UN WPP (population projections), World Bank (international comparators).
+
+### Data Cleaning
+
+- Each BNS source table is split into a national time series and a regional long-format table (Region, Year, Value), consistent with the WP1/WP2 one-table-per-file convention
+- Region names are normalised where Cyrillic look-alike characters were found in the source (documented per-file)
+- Dash ("-") values are preserved as missing, not converted to zero, particularly for regions created after 2000
+
+### Validation
+
+- Cross-check BNS and World Bank population totals for Kazakhstan where both exist, to confirm they align (not yet done - see Data_Inventory for status)
+- Cross-check the Worldometer-transcribed UN WPP projection figures against a direct UN WPP download once obtained
+
+### Integration
+
+A region-name crosswalk (mapping each source's naming convention to one canonical region name) should be built before WP3's regional data is merged with WP1/WP2 regional findings.
+
+### Limitations
+
+See the WP3 section of `Data_Sources.md` for source-specific limitations. Cross-cutting: WP3 explicitly excludes international student mobility and academic migration (Bolashak, Erasmus+, foreign students) - these remain in WP2. WP3 covers only general population and migration context.
