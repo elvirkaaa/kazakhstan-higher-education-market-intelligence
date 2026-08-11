@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kazakhstan — Internal Migration Map</title>
+<style>
+  :root{--navy:#0d1f42;--bg:#f7f8fa;--card:#fff;--border:#e1e0d9;--text:#18243a;--muted:#666;}
+  *{box-sizing:border-box;}
+  body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:24px;}
+  .wrap{max-width:960px;margin:0 auto;}
+  h1{font-size:20px;color:var(--navy);margin:0 0 4px;}
+  p.sub{font-size:13px;color:var(--muted);margin:0 0 18px;}
+  #map-wrap{position:relative;width:100%;background:#eef1f8;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+  #map{width:100%;height:auto;display:block;}
+  .status{padding:40px;text-align:center;color:var(--muted);font-size:13px;}
+  #tooltip{position:absolute;background:var(--navy);color:#fff;padding:8px 12px;border-radius:6px;font-size:12px;pointer-events:none;opacity:0;transition:opacity .1s;max-width:240px;z-index:5;}
+  #detail{margin-top:12px;font-size:13px;min-height:44px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:6px;}
+  #detail .name{font-weight:bold;color:var(--navy);}
+  .legend{display:flex;gap:16px;font-size:12px;color:var(--muted);margin:12px 0 0;flex-wrap:wrap;}
+  .dot{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:5px;}
+  .note{font-size:11px;color:var(--muted);margin-top:12px;line-height:1.5;}
+  .coverage-box{background:#fbf3e7;border:1px solid #e8cfa0;border-radius:6px;padding:10px 14px;font-size:12px;color:#7a5a1e;margin:14px 0;display:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Kazakhstan — Internal (Interregional) Migration</h1>
+  <p class="sub">Net migration by region, most recent available year. Click a region for exact figures.</p>
+
+  <div id="map-wrap">
+    <div id="status" class="status">Loading Kazakhstan regional boundaries&hellip;</div>
+    <svg id="map" viewBox="0 0 940 540" style="display:none;"></svg>
+    <div id="tooltip"></div>
+  </div>
+
+  <div id="detail">Hover or click a region to see its net migration figure.</div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:#1d5fa8"></span>Net in-migration</span>
+    <span><span class="dot" style="background:#c0392b"></span>Net out-migration</span>
+    <span><span class="dot" style="background:#cccccc"></span>Not available in this boundary file</span>
+  </div>
+
+  <div id="coverage-note" class="coverage-box">
+    <strong>Data coverage note:</strong> the free open boundary file used here (GADM-based, via
+    open-data-kazakhstan/geo-boundaries-kz) reflects Kazakhstan's administrative structure
+    <em>before</em> the 2018 Shymkent city status change and the 2022 creation of Abay, Zhetisu,
+    and Ulytau regions. Astana, Shymkent, Abay, Zhetisu, Ulytau, and Turkistan (as a separate
+    unit from the old "South Kazakhstan" oblast) are therefore shown in gray, not because their
+    data is missing, but because this specific free boundary source cannot represent them as
+    separate shapes. Their exact figures are still listed below the map.
+  </div>
+
+  <p class="note">
+    Source: Bureau of National Statistics of the Republic of Kazakhstan, "Interregional
+    population migration" table (data/processed/wp3/bns/KZ_Interregional_Migration_by_Region_Latest.xlsx
+    in this project) — reference year not explicitly stated in the source, most likely 2024/2025.
+    Region boundaries: open-data-kazakhstan/geo-boundaries-kz (GADM-derived, CC/public domain),
+    loaded live from cdn.jsdelivr.net.
+  </p>
+
+  <div id="all-regions-table" style="margin-top:18px;">
+    <p style="font-size:13px;font-weight:bold;color:var(--navy);margin:0 0 8px;">All 20 regions, net migration (full data, regardless of map coverage)</p>
+    <div id="table-body" style="font-size:12px;line-height:1.9;"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+const kzMigrationData = {
+  "Astana": 87459, "Almaty city": 33126, "Shymkent": 15130, "Almaty Region": 12110,
+  "Akmola": 292, "Mangystau": -2672, "Ulytau": -3965, "East Kazakhstan": -4248,
+  "Aktobe": -4216, "West Kazakhstan": -4989, "Kostanay": -4499, "Atyrau": -5424,
+  "Karaganda": -5387, "North Kazakhstan": -6441, "Pavlodar": -7661, "Abay": -9856,
+  "Kyzylorda": -11913, "Zhetisu": -13018, "Zhambyl": -21179, "Turkistan": -42649
+};
+
+const NAME_1_TO_DATA_KEY = {
+  "Aqmola": "Akmola", "Aqtöbe": "Aktobe", "Atyrau": "Atyrau",
+  "East Kazakhstan": "East Kazakhstan", "Mangghystau": "Mangystau",
+  "North Kazakhstan": "North Kazakhstan", "Pavlodar": "Pavlodar",
+  "Qaraghandy": "Karaganda", "Qostanay": "Kostanay", "Qyzylorda": "Kyzylorda",
+  "West Kazakhstan": "West Kazakhstan", "Zhambyl": "Zhambyl"
+};
+
+const tableBody = document.getElementById('table-body');
+Object.entries(kzMigrationData).sort((a,b) => b[1]-a[1]).forEach(([name, val]) => {
+  const color = val >= 0 ? '#1d5fa8' : '#c0392b';
+  tableBody.innerHTML += '<div><span style="display:inline-block;width:150px;">' + name + '</span><span style="color:' + color + ';font-weight:bold;">' + (val > 0 ? '+' : '') + val.toLocaleString() + '</span></div>';
+});
+
+d3.json("https://cdn.jsdelivr.net/gh/open-data-kazakhstan/geo-boundaries-kz@master/data/geojson/kz_1.json")
+  .then(kzGeo => {
+    kzGeo.features = kzGeo.features.filter(f => !f.properties.GID_2);
+
+    document.getElementById('status').style.display = 'none';
+    document.getElementById('coverage-note').style.display = 'block';
+    const svgEl = document.getElementById('map');
+    svgEl.style.display = 'block';
+    const svg = d3.select(svgEl);
+
+    const projection = d3.geoMercator().fitSize([900, 500], kzGeo);
+    const path = d3.geoPath(projection);
+
+    const values = Object.values(kzMigrationData);
+    const maxAbs = Math.max(...values.map(v => Math.abs(v)));
+    const colorScale = d3.scaleLinear()
+      .domain([-maxAbs, 0, maxAbs])
+      .range(["#c0392b", "#eef1f8", "#1d5fa8"]);
+
+    svg.selectAll("path").data(kzGeo.features).join("path")
+      .attr("d", path)
+      .attr("fill", function(d){
+        const key = NAME_1_TO_DATA_KEY[d.properties.NAME_1];
+        return key ? colorScale(kzMigrationData[key]) : "#cccccc";
+      })
+      .attr("stroke", "#ffffff").attr("stroke-width", 0.6)
+      .style("cursor", "pointer")
+      .on("mouseenter", function(event, d){
+        const name1 = d.properties.NAME_1 || "Unknown";
+        const key = NAME_1_TO_DATA_KEY[name1];
+        d3.select(this).attr("stroke", "#0d1f42").attr("stroke-width", 1.5);
+        const tt = document.getElementById('tooltip');
+        tt.style.opacity = 1;
+        tt.innerHTML = key
+          ? "<strong>" + name1 + "</strong><br>Net migration: " + (kzMigrationData[key] > 0 ? '+' : '') + kzMigrationData[key].toLocaleString()
+          : "<strong>" + name1 + "</strong><br>Not separately available in this boundary source";
+      })
+      .on("mousemove", function(event){
+        const rect = document.getElementById('map-wrap').getBoundingClientRect();
+        const tt = document.getElementById('tooltip');
+        tt.style.left = (event.clientX - rect.left + 12) + "px";
+        tt.style.top = (event.clientY - rect.top - 10) + "px";
+      })
+      .on("mouseleave", function(){
+        d3.select(this).attr("stroke", "#ffffff").attr("stroke-width", 0.6);
+        document.getElementById('tooltip').style.opacity = 0;
+      })
+      .on("click", function(event, d){
+        const name1 = d.properties.NAME_1 || "Unknown";
+        const key = NAME_1_TO_DATA_KEY[name1];
+        document.getElementById('detail').innerHTML = key
+          ? "<span class=\"name\">" + name1 + "</span>: net migration " + (kzMigrationData[key] > 0 ? '+' : '') + kzMigrationData[key].toLocaleString() + " (" + (kzMigrationData[key] > 0 ? 'net in-migration' : 'net out-migration') + ")"
+          : "<span class=\"name\">" + name1 + "</span>: this boundary file (pre-reform structure) does not represent this area as a separate unit. See the full 20-region table below the map for its actual figure.";
+      });
+  })
+  .catch(function(err){
+    document.getElementById('status').innerHTML =
+      "Could not load the Kazakhstan boundary file (network or CDN issue).<br>" +
+      "The data table below is unaffected - try reloading this file to retry the map.<br>" +
+      "<span style='font-size:11px;'>Technical detail: " + err + "</span>";
+  });
+</script>
+</body>
+</html>

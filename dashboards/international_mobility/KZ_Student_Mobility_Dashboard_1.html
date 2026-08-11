@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kazakhstan Higher Education & Student Mobility</title>
+<style>
+  :root{
+    --navy:#0d1f42; --gold:#b8860b; --inbound:#2a78d6; --outbound:#eb6834;
+    --domestic:#5b7fb5; --bg:#f7f8fa; --card:#ffffff; --border:#e1e0d9;
+    --text:#18243a; --muted:#666666;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:0;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px 60px;}
+  .hero{background:var(--navy);color:#fff;padding:40px 24px 32px;margin-bottom:28px;}
+  .hero h1{margin:0 0 6px;font-size:26px;}
+  .hero p.sub{margin:0 0 22px;color:#c9d2e3;font-size:14px;}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;}
+  .filters button, .filters select{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:#fff;padding:6px 14px;border-radius:6px;font-size:13px;cursor:pointer;}
+  .filters button.active{background:#fff;color:var(--navy);font-weight:bold;}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;}
+  .kpi{background:rgba(255,255,255,.07);border-radius:8px;padding:14px 16px;}
+  .kpi .label{font-size:12px;color:#c9d2e3;margin-bottom:4px;}
+  .kpi .value{font-size:24px;font-weight:bold;}
+  section{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:22px;}
+  section h2{font-size:16px;color:var(--navy);margin:0 0 4px;}
+  section p.desc{font-size:13px;color:var(--muted);margin:0 0 16px;}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:700px){.cols{grid-template-columns:1fr;}}
+  .bar-row{display:flex;align-items:center;margin:5px 0;font-size:13px;}
+  .bar-label{width:120px;flex-shrink:0;}
+  .bar-track{flex:1;background:#eef1f8;border-radius:3px;height:16px;position:relative;}
+  .bar-fill{height:16px;border-radius:3px;}
+  .bar-value{margin-left:8px;width:70px;text-align:right;}
+  .toggle{display:inline-flex;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:14px;}
+  .toggle button{border:none;background:#fff;padding:6px 16px;font-size:13px;cursor:pointer;color:var(--muted);}
+  .toggle button.active{background:var(--navy);color:#fff;}
+  .campus-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;font-size:13px;}
+  .campus-card{border:1px solid var(--border);border-radius:6px;padding:10px 12px;}
+  .campus-card .uni{font-weight:bold;color:var(--navy);}
+  .campus-card .meta{color:var(--muted);font-size:12px;}
+  .findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+  .finding{border-left:3px solid var(--gold);padding:10px 14px;background:#fbf7ee;border-radius:0 6px 6px 0;}
+  .finding .tag{font-size:11px;letter-spacing:.05em;color:var(--gold);font-weight:bold;text-transform:uppercase;}
+  .finding p{font-size:13px;margin:6px 0 8px;}
+  .finding .src{font-size:11px;color:var(--muted);}
+  .schematic{display:flex;justify-content:center;gap:0;font-size:12px;margin:12px 0;}
+  .sch-col{flex:1;text-align:center;border:1px solid var(--border);border-radius:6px;margin:0 6px;padding:10px;}
+  .sch-col.out{border-color:var(--outbound);}
+  .sch-col.in{border-color:var(--inbound);}
+  .sch-title{font-weight:bold;font-size:11px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;}
+  .sch-col.out .sch-title{color:var(--outbound);}
+  .sch-col.in .sch-title{color:var(--inbound);}
+  .sch-item{font-size:12px;padding:4px 0;color:var(--text);}
+  .sch-arrow{align-self:center;font-size:18px;color:var(--muted);padding:0 6px;}
+  .footer-note{font-size:11px;color:var(--muted);margin-top:8px;}
+  canvas{max-width:100%;}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="wrap" style="padding:0;">
+    <h1>Kazakhstan Higher Education &amp; Student Mobility</h1>
+    <p class="sub">Where students come from, where they go, and how mobility is changing (2021&ndash;2024)</p>
+    <div class="filters">
+      <span style="font-size:13px;color:#c9d2e3;align-self:center;">Direction:</span>
+      <button id="btn-inbound" class="active" onclick="setDirection('inbound')">Inbound</button>
+      <button id="btn-outbound" onclick="setDirection('outbound')">Outbound</button>
+      <span style="font-size:13px;color:#c9d2e3;align-self:center;margin-left:12px;">Year: 2024</span>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="label">Inbound mobility students (2024)</div><div class="value">1,207</div></div>
+      <div class="kpi"><div class="label">Outbound mobility students (2024)</div><div class="value">4,416</div></div>
+      <div class="kpi"><div class="label">Main origin (inbound)</div><div class="value">Kyrgyzstan</div></div>
+      <div class="kpi"><div class="label">Main destination (outbound)</div><div class="value">Turkey</div></div>
+      <div class="kpi"><div class="label">Mobility balance</div><div class="value">-3,209</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section>
+  <h2>Student flows &mdash; top countries</h2>
+  <p class="desc">Toggle direction above. Bars show 2024 academic mobility (not full-degree enrolment).</p>
+  <div id="flow-inbound">
+    <div class="bar-row"><div class="bar-label">Kyrgyzstan</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--inbound)"></div></div><div class="bar-value">411</div></div>
+    <div class="bar-row"><div class="bar-label">Russia</div><div class="bar-track"><div class="bar-fill" style="width:53%;background:var(--inbound)"></div></div><div class="bar-value">219</div></div>
+    <div class="bar-row"><div class="bar-label">China</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--inbound)"></div></div><div class="bar-value">114</div></div>
+    <div class="bar-row"><div class="bar-label">France</div><div class="bar-track"><div class="bar-fill" style="width:12%;background:var(--inbound)"></div></div><div class="bar-value">51</div></div>
+    <div class="bar-row"><div class="bar-label">Uzbekistan</div><div class="bar-track"><div class="bar-fill" style="width:14%;background:var(--inbound)"></div></div><div class="bar-value">59</div></div>
+  </div>
+  <div id="flow-outbound" style="display:none;">
+    <div class="bar-row"><div class="bar-label">Turkey</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--outbound)"></div></div><div class="bar-value">792</div></div>
+    <div class="bar-row"><div class="bar-label">Poland</div><div class="bar-track"><div class="bar-fill" style="width:87%;background:var(--outbound)"></div></div><div class="bar-value">691</div></div>
+    <div class="bar-row"><div class="bar-label">Russia</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:var(--outbound)"></div></div><div class="bar-value">594</div></div>
+    <div class="bar-row"><div class="bar-label">South Korea</div><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--outbound)"></div></div><div class="bar-value">238</div></div>
+    <div class="bar-row"><div class="bar-label">Germany</div><div class="bar-track"><div class="bar-fill" style="width:24%;background:var(--outbound)"></div></div><div class="bar-value">193</div></div>
+  </div>
+  <p class="footer-note">Source: National Report on Higher Education 2024, Tables 6.1.3&ndash;6.1.5 (inbound) and 6.1.9&ndash;6.1.11 (outbound).</p>
+</section>
+
+<div class="cols">
+  <section>
+    <h2>Elite outbound (Bolashak) &mdash; cumulative destination</h2>
+    <p class="desc">Where Kazakhstan's state-funded scholars go, all years to date</p>
+    <div class="bar-row"><div class="bar-label">UK &amp; Ireland</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--navy)"></div></div><div class="bar-value">45.5%</div></div>
+    <div class="bar-row"><div class="bar-label">USA &amp; Canada</div><div class="bar-track"><div class="bar-fill" style="width:62%;background:var(--navy)"></div></div><div class="bar-value">28%</div></div>
+    <div class="bar-row"><div class="bar-label">Europe</div><div class="bar-track"><div class="bar-fill" style="width:26%;background:var(--navy)"></div></div><div class="bar-value">11.7%</div></div>
+    <div class="bar-row"><div class="bar-label">Asia/Oceania</div><div class="bar-track"><div class="bar-fill" style="width:17%;background:var(--navy)"></div></div><div class="bar-value">7.9%</div></div>
+    <div class="bar-row"><div class="bar-label">Russia</div><div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--navy)"></div></div><div class="bar-value">6.9%</div></div>
+  </section>
+  <section>
+    <h2>General inbound mobility &mdash; by region</h2>
+    <p class="desc">2024 incoming mobility students, by region of origin</p>
+    <div class="bar-row"><div class="bar-label">CIS</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--gold)"></div></div><div class="bar-value">788</div></div>
+    <div class="bar-row"><div class="bar-label">Europe</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--gold)"></div></div><div class="bar-value">221</div></div>
+    <div class="bar-row"><div class="bar-label">South/SE Asia</div><div class="bar-track"><div class="bar-fill" style="width:23%;background:var(--gold)"></div></div><div class="bar-value">181</div></div>
+    <div class="bar-row"><div class="bar-label">Americas</div><div class="bar-track"><div class="bar-fill" style="width:1%;background:var(--gold)"></div></div><div class="bar-value">10</div></div>
+    <p class="footer-note">This asymmetry (elite outbound West-facing vs. general inbound CIS-facing) is one of WP2&rsquo;s central findings.</p>
+  </section>
+</div>
+
+<section>
+  <h2>Higher-education supply by region</h2>
+  <p class="desc"><strong>Proxy metric:</strong> share of national HE programmes (WP1), not a direct student headcount by region &mdash; no regional student-enrolment dataset was available.</p>
+  <div class="bar-row"><div class="bar-label">Almaty</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--navy)"></div></div><div class="bar-value">71.6%</div></div>
+  <div class="bar-row"><div class="bar-label">Ust-Kamenogorsk</div><div class="bar-track"><div class="bar-fill" style="width:14%;background:var(--navy)"></div></div><div class="bar-value">10.0%</div></div>
+  <div class="bar-row"><div class="bar-label">Astana</div><div class="bar-track"><div class="bar-fill" style="width:8%;background:var(--navy)"></div></div><div class="bar-value">5.5%</div></div>
+  <div class="bar-row"><div class="bar-label">Pavlodar</div><div class="bar-track"><div class="bar-fill" style="width:7%;background:var(--navy)"></div></div><div class="bar-value">5.0%</div></div>
+  <div class="bar-row"><div class="bar-label">Shymkent</div><div class="bar-track"><div class="bar-fill" style="width:2%;background:var(--navy)"></div></div><div class="bar-value">1.3%</div></div>
+  <div class="bar-row"><div class="bar-label">Turkistan</div><div class="bar-track"><div class="bar-fill" style="width:1.5%;background:var(--outbound)"></div></div><div class="bar-value">1.0%</div></div>
+  <p class="footer-note" style="color:var(--outbound);font-weight:bold;">Turkistan region has the country&rsquo;s highest child-population share (39.5%) yet only 1.0% of national HE supply &mdash; see Key Findings below.</p>
+</section>
+
+<div class="cols">
+  <section>
+    <h2>Foreign university branch campuses</h2>
+    <p class="desc">33 active branches, 11 partner countries (2025)</p>
+    <div class="campus-list">
+      <div class="campus-card"><div class="uni">Cardiff University</div><div class="meta">UK &middot; Astana &middot; opened 2025</div></div>
+      <div class="campus-card"><div class="uni">Coventry University</div><div class="meta">UK &middot; Astana &middot; opened 2024</div></div>
+      <div class="campus-card"><div class="uni">Woosong University</div><div class="meta">South Korea &middot; Turkistan &middot; opened 2025</div></div>
+      <div class="campus-card"><div class="uni">MGIMO</div><div class="meta">Russia &middot; Astana &middot; opened 2025</div></div>
+      <div class="campus-card"><div class="uni">New York Film Academy</div><div class="meta">USA &middot; Kaskelen &middot; opened 2025</div></div>
+      <div class="campus-card"><div class="uni">Polytechnic Univ. of Marche</div><div class="meta">Italy &middot; opened 2025</div></div>
+    </div>
+    <p class="footer-note">Source: MSHE RK press material, 2025. Full 33-campus list in data/processed/wp2/international_partnerships_2025/.</p>
+  </section>
+  <section>
+    <h2>Internationalisation channels</h2>
+    <p class="desc">Kazakhstan runs distinct, largely separate channels</p>
+    <div class="schematic">
+      <div class="sch-col out">
+        <div class="sch-title">Outbound</div>
+        <div class="sch-item">Bolashak</div>
+        <div class="sch-item">&darr;</div>
+        <div class="sch-item">UK / USA</div>
+      </div>
+      <div class="sch-arrow">&harr;</div>
+      <div class="sch-col in">
+        <div class="sch-title">Inbound</div>
+        <div class="sch-item">Intl. students</div>
+        <div class="sch-item">&darr;</div>
+        <div class="sch-item">CIS countries</div>
+      </div>
+    </div>
+    <p style="font-size:12px;text-align:center;color:var(--muted);margin:4px 0 0;">both feed into &darr;</p>
+    <p style="font-size:13px;text-align:center;font-weight:bold;color:var(--navy);margin:4px 0 0;">Foreign branch campuses (broader country mix)</p>
+  </section>
+</div>
+
+<section>
+  <h2>Demographic context</h2>
+  <p class="desc">General population and migration trends (WP3) &mdash; not student-specific</p>
+  <div class="cols">
+    <div>
+      <p style="font-size:13px;font-weight:bold;margin:0 0 6px;">Population, 1990&ndash;2025</p>
+      <div style="position:relative;height:180px;"><canvas id="chartPop"></canvas></div>
+    </div>
+    <div>
+      <p style="font-size:13px;font-weight:bold;margin:0 0 6px;">Youth cohort (15&ndash;24), 1990&ndash;2026</p>
+      <div style="position:relative;height:180px;"><canvas id="chartYouth"></canvas></div>
+    </div>
+  </div>
+  <p class="footer-note">Sources: World Bank (population); UN WPP Data Portal (youth cohort). See reports/wp3/ for full detail.</p>
+</section>
+
+<section>
+  <h2>What does the data tell us?</h2>
+  <div class="findings">
+    <div class="finding">
+      <div class="tag">Outbound</div>
+      <p>Kazakhstan&rsquo;s elite outbound mobility (Bolashak) is concentrated almost entirely in the UK, USA, and Canada.</p>
+      <div class="src">Source: National Report 2024, Bolashak section</div>
+    </div>
+    <div class="finding">
+      <div class="tag">Inbound</div>
+      <p>Inbound student mobility is strongly CIS-concentrated, led by Kyrgyzstan and Russia in 2024.</p>
+      <div class="src">Source: National Report 2024, Table 6.1.3</div>
+    </div>
+    <div class="finding">
+      <div class="tag">Regional</div>
+      <p>Higher-education supply is inversely related to youth population share &mdash; Turkistan region has the most children but almost no HE supply.</p>
+      <div class="src">Source: WP1 &times; WP3 cross-analysis</div>
+    </div>
+    <div class="finding">
+      <div class="tag">Internationalisation</div>
+      <p>Foreign branch campuses draw on a broader partner-country set (Korea, Italy, Poland) than either student-mobility channel.</p>
+      <div class="src">Source: MSHE RK, 2025</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Sources &amp; methodology</h2>
+  <p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0;">
+  Kazakhstan National Report on Higher Education 2024 (Section 6) &middot; CIS Academic Mobility Report (translated) &middot;
+  MSHE RK press material on foreign university partnerships (2025) &middot; UN World Population Prospects Data Portal &middot;
+  World Bank Open Data &middot; Bureau of National Statistics of the Republic of Kazakhstan.
+  Several figures in the underlying data carry documented data-quality caveats (see analysis/WP2_Insights.md and analysis/WP3_Insights.md) &mdash;
+  this dashboard presents best-available figures with sourcing, not fully reconciled single "true" values.
+  </p>
+</section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+function setDirection(dir){
+  document.getElementById('btn-inbound').classList.toggle('active', dir==='inbound');
+  document.getElementById('btn-outbound').classList.toggle('active', dir==='outbound');
+  document.getElementById('flow-inbound').style.display = dir==='inbound' ? 'block' : 'none';
+  document.getElementById('flow-outbound').style.display = dir==='outbound' ? 'block' : 'none';
+}
+
+new Chart(document.getElementById('chartPop'), {
+  type: 'line',
+  data: { labels: ['1990','1995','2000','2005','2010','2015','2020','2025'],
+    datasets: [{ data: [17.15,16.73,15.50,15.97,16.84,18.08,19.48,20.84], borderColor:'#0d1f42', backgroundColor:'rgba(13,31,66,0.08)', fill:true, tension:0.2, pointRadius:2 }] },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}},
+    scales:{ y:{ title:{display:true,text:'Million',font:{size:10}}, grid:{color:'#e1e0d9'} }, x:{ grid:{display:false} } } }
+});
+new Chart(document.getElementById('chartYouth'), {
+  type: 'line',
+  data: { labels: ['1990','2000','2010','2020','2024','2025','2026'],
+    datasets: [{ data: [2.93,2.82,2.75,2.75,2.82,2.94,3.08], borderColor:'#eb6834', backgroundColor:'rgba(235,104,52,0.08)', fill:true, tension:0.2, pointRadius:2 }] },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}},
+    scales:{ y:{ title:{display:true,text:'Million, aged 15-24',font:{size:10}}, grid:{color:'#e1e0d9'} }, x:{ grid:{display:false} } } }
+});
+</script>
+</body>
+</html>
