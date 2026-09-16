@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Overview — Kazakhstan Education &amp; Migration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<style>
+.transition-link{display:inline-block;font-family:"Space Grotesk";font-weight:600;font-size:14px;color:var(--forest);text-decoration:none;border-bottom:2px solid var(--forest);padding-bottom:2px;}
+.transition-link:hover{color:var(--ink);border-color:var(--ink);}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">Kazakhstan<span class="sub">Education &amp; Migration</span></div>
+  <nav>
+    <a href="index.html" class="active"><span class="num">01</span>Overview</a>
+    <a href="higher-education.html"><span class="num">02</span>Education Supply</a>
+    <a href="internationalisation.html"><span class="num">03</span>Internationalisation</a>
+    <a href="demographics.html"><span class="num">04</span>Demographic Demand</a>
+    <a href="cross-analysis.html"><span class="num">05</span>Supply × Demand</a>
+    <a href="findings.html"><span class="num">06</span>Strategic Implications</a>
+  </nav>
+  <div class="foot">
+    <div class="foot-label">Appendix</div>
+    <a href="data-method.html">Data &amp; Methods</a>
+    <a href="methodology.html">Data Quality &amp; Methodology</a>
+    <a href="sources.html">Sources</a>
+    <a href="about.html">About</a>
+  </div>
+</div>
+
+<div class="main">
+  <div class="eyebrow">Independent Data Analytics Project · 2026</div>
+  <h1 class="page-title">Kazakhstan Higher Education Market Intelligence</h1>
+  <p class="lede">Analysing how higher-education supply, international student mobility, and demographic change interact across Kazakhstan.</p>
+
+  <div class="role-tools-row">
+    <div>
+      <div class="rt-label">Role</div>
+      <div class="rt-value">Data Cleaning · Research · Analysis · Data Modelling · Visualisation</div>
+    </div>
+    <div>
+      <div class="rt-label">Tools</div>
+      <div class="rt-value">Python · Power BI · SQL · Pandas · D3.js · Chart.js</div>
+    </div>
+  </div>
+
+  <div class="question-block">
+    <div class="section-num" style="margin-bottom:6px;">The Question</div>
+    <p class="question-text">Is Kazakhstan's higher-education capacity developing in the same places where future demand is growing?</p>
+    <div class="pillar-row">
+      <div class="pillar"><div class="pillar-title">Education Supply</div><div class="pillar-desc">Where are programmes and universities concentrated?</div></div>
+      <div class="pillar-plus">+</div>
+      <div class="pillar"><div class="pillar-title">Internationalisation</div><div class="pillar-desc">How does student mobility connect Kazakhstan with other countries?</div></div>
+      <div class="pillar-plus">+</div>
+      <div class="pillar"><div class="pillar-title">Demography</div><div class="pillar-desc">Where is population and youth demand growing?</div></div>
+    </div>
+    <div class="pillar-arrow">↓</div>
+    <div class="pillar-result">Market Intelligence</div>
+  </div>
+
+  <div class="meta-line">Data vintage: 2024-2026, mixed by source · Regions: post-2022 (20) unless noted</div>
+
+  <h2 class="section-title"><span class="section-num">01 · Supply</span>Programme supply is highly concentrated</h2>
+  <div class="split-65-35">
+    <div>
+      <h3 class="chart-title">Distinct programmes, national registry</h3>
+      <p class="chart-desc">The OPVO/EPVO registry contains one row per registration event; grouping by code, university, and level collapses this to the true distinct-programme count.</p>
+      <div id="dedup-chart-wrap" style="height:220px;position:relative;"><canvas id="dedup-chart"></canvas></div>
+      <div class="source-line">Source: OPVO/EPVO Registry, consolidated dataset (2026)</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">70.7%</div>
+      <div class="stat-label">of programme supply is in Almaty</div>
+      <div class="stat-note">Out of 2,417 distinct programmes, deduplicated from 8,530 raw registry records (71.7% reduction, verified against official report totals). Full method in the Appendix.</div>
+    </div>
+  </div>
+
+  <h2 class="section-title"><span class="section-num">02 · Mobility</span>Kazakhstan's international education relationships follow different geographic patterns</h2>
+  <div class="split-35-65">
+    <div class="stat-block pos" title="Definition as stated by the source: foreign citizens currently enrolled in Kazakhstani HEIs, current academic year. The source does not specify whether this includes short-term exchange students alongside full-degree enrolees.">
+      <div class="stat-num">35,057</div>
+      <div class="stat-label">International students ⓘ</div>
+      <div class="stat-note">Full-degree enrolment, per source definition.</div>
+    </div>
+    <div class="stat-block" title="Cumulative total since the programme's founding, not an annual figure — see the Internationalisation page for the current annual cohort (1,079 scholars under monitoring in 2024).">
+      <div class="stat-num">12,727</div>
+      <div class="stat-label">Bolashak awards ⓘ</div>
+      <div class="stat-note">Cumulative scholarship graduates — a different population than international students above, following a different destination pattern.</div>
+    </div>
+  </div>
+  <p class="note-inline">Full-degree students, short-term exchange, and elite outbound scholarship mobility are dominated by different partner countries — there is no single "most international" partner. See Internationalisation for the full picture.</p>
+
+  <h2 class="section-title"><span class="section-num">03 · Demand</span>Demographic growth is becoming increasingly uneven</h2>
+  <div class="split-65-35">
+    <div>
+      <h3 class="chart-title">Births, deaths, and natural growth, 1991-2025</h3>
+      <p class="chart-desc">National totals, full available BNS time series.</p>
+      <div style="height:260px;position:relative;"><canvas id="trend-chart"></canvas></div>
+      <div class="source-line">Source: BNS, tables 612101 / 612201 / 612301</div>
+    </div>
+    <div class="stat-block neg">
+      <div class="stat-num">-24.9%</div>
+      <div class="stat-label">Birth decline since 2021</div>
+      <div class="stat-note">From a peak of 445,875 births (2021) to 335,005 (2025). Regional growth and youth concentration vary sharply — see Demographic Demand.</div>
+    </div>
+  </div>
+
+  <div class="finding-strip">
+    <div class="label">These patterns do not necessarily align</div>
+    <p>Where recorded programme supply is concentrated, where mobility connects Kazakhstan internationally, and where the youngest, fastest-growing populations live are three separate geographies. <strong>Supply × Demand</strong> tests directly whether they overlap — and where they diverge.</p>
+    <p style="margin-top:14px;"><a href="cross-analysis.html" class="transition-link" >→ Explore where supply and demand diverge</a></p>
+  </div>
+
+  <footer class="site-foot">Kazakhstan Higher Education Market Intelligence — prepared for AZM Education · All figures sourced; see Methodology and Data Sources.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+new Chart(document.getElementById('dedup-chart'), {
+  type: 'bar',
+  data: {
+    labels: ['Raw records', 'Distinct programmes'],
+    datasets: [{ data: [8530, 2417], backgroundColor: ['#A9A49A', '#1F5C4F'], borderRadius: 0, barThickness: 60 }]
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false, indexAxis:'y',
+    plugins:{legend:{display:false}, tooltip:{callbacks:{label:(c)=>c.raw.toLocaleString()}}},
+    scales:{ x:{ticks:{font:{family:"Inter",size:11}}, grid:{color:'#DDD7C6'}}, y:{ticks:{font:{family:"Inter",size:12}}, grid:{display:false}} }
+  }
+});
+
+const YEARS = [1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+const BIRTHS = [353174,337612,315482,305624,276125,253175,232356,222380,217578,222054,221487,227171,247946,273028,278977,301756,321963,357555,356326,367785,372796,381272,387372,399448,398591,401031,390505,397618,401869,426726,445875,403893,388428,365923,335005];
+const DEATHS = [134324,137518,156070,160339,168656,166028,160138,154314,147416,149778,147876,149381,155277,152250,157121,157210,158297,152878,143031,146220,144503,143690,136672,132619,131292,131983,129173,129680,132621,160962,181216,133523,130686,132916,134735];
+new Chart(document.getElementById('trend-chart'), {
+  type: 'line',
+  data: { labels: YEARS, datasets: [
+    {label:'Births', data:BIRTHS, borderColor:'#1F5C4F', backgroundColor:'transparent', tension:0.25, pointRadius:0, borderWidth:2.5},
+    {label:'Deaths', data:DEATHS, borderColor:'#B65C3A', backgroundColor:'transparent', tension:0.25, pointRadius:0, borderWidth:2.5}
+  ]},
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom', labels:{font:{family:"Inter",size:11.5}, boxWidth:14}}},
+    scales:{ y:{ticks:{font:{family:"Inter",size:10.5}}, grid:{color:'#DDD7C6'}}, x:{ticks:{font:{family:"Inter",size:10.5}, maxRotation:0, autoSkip:true, maxTicksLimit:12}, grid:{display:false}} }
+  }
+});
+</script>
+</body>
+</html>

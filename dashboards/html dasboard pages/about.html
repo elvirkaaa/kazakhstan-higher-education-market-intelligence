@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About This Project — Kazakhstan Education &amp; Migration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+
+
+<style>
+.wp-strip{border-top:2px solid var(--ink);margin-top:10px;}
+.wp-row{display:grid;grid-template-columns:80px 1fr 140px;gap:24px;padding:18px 0;border-bottom:1px solid var(--border);align-items:baseline;}
+.wp-row .wp-num{font-family:"Space Grotesk";font-weight:700;font-size:22px;color:var(--ink);}
+.wp-row .wp-title{font-family:"Space Grotesk";font-weight:600;font-size:15px;color:var(--ink);}
+.wp-row .wp-desc{font-size:13px;color:var(--ink-soft);margin-top:3px;}
+.wp-status{font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;text-align:right;}
+.wp-status.done{color:var(--forest);}
+.wp-status.planned{color:var(--warmgrey);}
+@media (max-width:700px){.wp-row{grid-template-columns:1fr;gap:4px;}.wp-status{text-align:left;}}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">Kazakhstan<span class="sub">Education &amp; Migration</span></div>
+  <nav>
+    <a href="index.html"><span class="num">01</span>Overview</a>
+    <a href="higher-education.html"><span class="num">02</span>Education Supply</a>
+    <a href="internationalisation.html"><span class="num">03</span>Internationalisation</a>
+    <a href="demographics.html"><span class="num">04</span>Demographic Demand</a>
+    <a href="cross-analysis.html"><span class="num">05</span>Supply × Demand</a>
+    <a href="findings.html"><span class="num">06</span>Strategic Implications</a>
+  </nav>
+  <div class="foot">
+    <div class="foot-label">Appendix</div>
+    <a href="data-method.html">Data &amp; Methods</a>
+    <a href="methodology.html">Data Quality &amp; Methodology</a>
+    <a href="sources.html">Sources</a>
+    <a href="about.html">About</a>
+  </div>
+</div>
+
+<div class="main">
+  <div class="eyebrow">About the Analyst</div>
+  <h1 class="page-title" style="font-size:36px;">Elvira</h1>
+  <p class="lede" style="font-size:16px;">Business &amp; IT student · Data Analytics &amp; Market Intelligence</p>
+  <p class="chart-desc" style="font-size:14.5px;max-width:680px;margin-top:10px;">I am interested in using data to understand how demographic, educational, and economic systems interact — this project was built to explore a question that is increasingly relevant for Kazakhstan: whether the geography of higher-education supply is keeping pace with demographic change.</p>
+
+  <div class="split-50-50" style="margin-top:28px;">
+    <div>
+      <div class="rt-label">My Role on This Project</div>
+      <ul style="font-size:13px;line-height:2;padding-left:18px;margin:8px 0 0;color:var(--ink);">
+        <li>Dataset cleaning &amp; deduplication</li>
+        <li>Geographic matching &amp; region attribution</li>
+        <li>Data quality checks &amp; limitation documentation</li>
+        <li>Concentration analysis (HHI)</li>
+        <li>Cross-analysis (supply vs. demographic demand)</li>
+        <li>Dashboard design &amp; development</li>
+        <li>Research synthesis</li>
+      </ul>
+    </div>
+    <div>
+      <div class="rt-label">Tech Stack</div>
+      <div class="pill-row" style="margin-top:8px;">
+        <span class="pill">Python</span><span class="pill">Pandas</span><span class="pill">Power BI</span>
+        <span class="pill">SQL</span><span class="pill">Excel</span><span class="pill">HTML/CSS</span>
+        <span class="pill">D3.js</span><span class="pill">Chart.js</span>
+      </div>
+      <div class="rt-label" style="margin-top:22px;">What This Project Demonstrates</div>
+      <ul style="font-size:13px;line-height:1.9;padding-left:18px;margin:8px 0 0;color:var(--ink);">
+        <li><strong>Data skills</strong> — messy datasets, deduplication, validation</li>
+        <li><strong>Analytical skills</strong> — trend, concentration, and cross-analysis</li>
+        <li><strong>Business skills</strong> — market intelligence, insight communication</li>
+        <li><strong>Technical skills</strong> — interactive data visualisation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="meta-line" style="margin-top:24px;">Prepared for: AZM Education · Status: WP1-WP3 complete, WP4-WP5 planned</div>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Purpose</span>Why this project exists</h2>
+  <p class="chart-desc" style="font-size:14.5px;max-width:760px;">AZM Education is a consultancy focused on Kazakhstan and Central Asia's higher-education sector. This project was built to answer a specific market-intelligence question for the consultancy: <strong>where is Kazakhstan's higher-education supply concentrated, how internationalised is it, what demographic pressures exist, and where do supply and demand visibly diverge?</strong> It combines a public programme registry, government mobility and demographic statistics, and international data sources into one connected analytical product, rather than treating each dataset in isolation.</p>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Data &amp; Methods</span>What this draws on</h2>
+  <p class="chart-desc" style="font-size:14.5px;max-width:760px;">Four independently-sourced datasets — the OPVO/EPVO programme registry, BNS demographic and migration tables, MSHE RK/ENIC-Kazakhstan mobility reports, and UNESCO/UN DESA cross-checks — cleaned, deduplicated, and joined via a region crosswalk built to reconcile Kazakhstan's 2018 and 2022 administrative boundary reforms. Full pipeline, validation checks, and every documented data-quality issue are on <a href="data-method.html" style="color:var(--forest);" >Data &amp; Methods</a> and <a href="methodology.html" style="color:var(--forest);" >Methodology</a>.</p>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Key Findings</span>What the analysis found</h2>
+  <ul style="font-size:13.5px;line-height:1.85;padding-left:18px;margin:0;max-width:760px;color:var(--ink);">
+    <li>Higher-education programme supply is heavily concentrated: 70.7% of the 2,417 distinct programmes identified are in Almaty (regional HHI 5,176; institutional HHI not calculated — full 46-university data unavailable)</li>
+    <li>Internationalisation runs through 9+ structurally distinct channels (full-degree, exchange, Bolashak, institutional partnerships) with different dominant partner countries — no single "internationalisation" figure represents all of them</li>
+    <li>Demographic growth is geographically uneven (natural growth ranges from +17.4 to -2.7 per 1,000 across regions) and does not track programme supply: youth share and supply share correlate weakly and, in one robustness check (Spearman vs. Pearson), the apparent link with migration turned out to be driven by two outlier regions</li>
+    <li>Six regions combine above-median youth population share with below-median recorded programme supply — a spatial pattern worth further investigation, not evidence of unmet demand</li>
+  </ul>
+  <p class="note-inline" style="margin-top:10px;">Full evidence, caveats, and the distinction between what's observed vs. interpreted are on <a href="findings.html" style="color:var(--forest);" >Strategic Implications</a>.</p>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Limitations</span>What this project cannot show</h2>
+  <p class="chart-desc" style="font-size:14.5px;max-width:760px;">Programme counts are not enrolment or capacity; the youth (0-15) indicator is demographic context, not a direct forecast of university-age demand; migration data captures all movement, not student-specific movement; and the Supply × Demand comparison identifies spatial patterns, not causation or unmet demand. None of these are hidden — each page states its own limitations next to its findings.</p>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Work Packages</span>Project structure and status</h2>
+  <div class="wp-strip">
+    <div class="wp-row">
+      <div class="wp-num">01</div>
+      <div><div class="wp-title">Higher Education Landscape</div><div class="wp-desc">Programme registry deduplication, regional supply concentration, degree-level and tuition analysis, institutional rankings.</div></div>
+      <div class="wp-status done">Complete</div>
+    </div>
+    <div class="wp-row">
+      <div class="wp-num">02</div>
+      <div><div class="wp-title">Internationalisation</div><div class="wp-desc">Student and faculty exchange, Bolashak and government grant programmes, foreign university presence, bilateral cooperation, Erasmus+.</div></div>
+      <div class="wp-status done">Complete</div>
+    </div>
+    <div class="wp-row">
+      <div class="wp-num">03</div>
+      <div><div class="wp-title">Demography &amp; Migration</div><div class="wp-desc">National demographic trends, regional population and age structure, internal migration across two administrative boundary versions.</div></div>
+      <div class="wp-status done">Complete</div>
+    </div>
+    <div class="wp-row">
+      <div class="wp-num">04</div>
+      <div><div class="wp-title">Labour Market</div><div class="wp-desc">Graduate employment outcomes, salaries by field and region, and how they relate to programme supply from WP1.</div></div>
+      <div class="wp-status planned">Planned</div>
+    </div>
+    <div class="wp-row">
+      <div class="wp-num">05</div>
+      <div><div class="wp-title">Strategic Assessment</div><div class="wp-desc">Synthesis of WP1-WP4 into market-entry and capacity-expansion recommendations for AZM Education.</div></div>
+      <div class="wp-status planned">Planned</div>
+    </div>
+  </div>
+  <p class="note-inline" style="margin-top:20px;">Cross-Analysis (combining WP1 and WP3) and Methodology are treated as standalone pages in this dashboard rather than separate work packages, since they synthesise across the WPs above rather than introducing new source data.</p>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Prepared By</span>Research and analysis</h2>
+  <p class="chart-desc" style="font-size:14.5px;max-width:760px;">Prepared by an intern on the Internationalization &amp; Analytics Research team at AZM Education, working alongside a project supervisor at AZM who reviewed and directed the analysis at each stage — including the decision to build a raw, non-aggregated data repository with a connectable front-end rather than a static report.</p>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Repository</span>Full project data and code</h2>
+  <p class="chart-desc" style="font-size:14.5px;max-width:760px;">All raw data, processed datasets, analytical tables, and dashboard source files are version-controlled and publicly viewable in the project's GitHub repository.</p>
+  <table class="editorial compact" style="max-width:560px;">
+    <tr><th>Repository</th><th>Link</th></tr>
+    <tr><td>kazakhstan-higher-education-market-intelligence</td><td><a href="https://github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence" target="_blank" style="color:var(--forest);">github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence</a></td></tr>
+  </table>
+
+  <footer class="site-foot">Kazakhstan Higher Education Market Intelligence — prepared for AZM Education.</footer>
+</div>
+</body>
+</html>

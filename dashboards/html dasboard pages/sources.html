@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Data Sources — Kazakhstan Education &amp; Migration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+
+
+<style>
+table.editorial td a{color:var(--forest);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:2px;}
+table.editorial td a:hover{text-decoration-color:var(--forest);}
+.src-group-title{font-family:"Space Grotesk";font-size:13px;font-weight:600;color:var(--terracotta);text-transform:uppercase;letter-spacing:.05em;margin:34px 0 10px;}
+.src-group-title:first-of-type{margin-top:8px;}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">Kazakhstan<span class="sub">Education &amp; Migration</span></div>
+  <nav>
+    <a href="index.html"><span class="num">01</span>Overview</a>
+    <a href="higher-education.html"><span class="num">02</span>Education Supply</a>
+    <a href="internationalisation.html"><span class="num">03</span>Internationalisation</a>
+    <a href="demographics.html"><span class="num">04</span>Demographic Demand</a>
+    <a href="cross-analysis.html"><span class="num">05</span>Supply × Demand</a>
+    <a href="findings.html"><span class="num">06</span>Strategic Implications</a>
+  </nav>
+  <div class="foot">
+    <div class="foot-label">Appendix</div>
+    <a href="data-method.html">Data &amp; Methods</a>
+    <a href="methodology.html">Data Quality &amp; Methodology</a>
+    <a href="sources.html">Sources</a>
+    <a href="about.html">About</a>
+  </div>
+</div>
+
+<div class="main">
+  <div class="eyebrow">Sources — Reference</div>
+  <h1 class="page-title" style="font-size:36px;">Where every number in this project comes from</h1>
+  <p class="lede" style="font-size:16px;">A complete reference list, organised by work package. Government and institutional sources are linked directly; project-specific processed files link to their exact location in the project's own data repository.</p>
+  <div class="meta-line">Compiled Aug 2026 · Project repository: <a href="https://github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence" style="color:var(--forest);">github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence</a></div>
+
+  <h2 class="section-title"><span class="section-num">WP1</span>Higher Education Landscape</h2>
+
+  <div class="src-group-title">Primary registry</div>
+  <table class="editorial compact">
+    <tr><th>Source</th><th>What it provides</th><th>Link</th></tr>
+    <tr><td>OPVO — Reestr Obrazovatelnykh Programm (Register of Educational Programmes)</td><td>Live public registry of all licensed HE programmes, by university, level, subject, price, English-medium flag</td><td><a href="https://epvo.kz/#/register/education_program" target="_blank">epvo.kz/#/register/education_program</a></td></tr>
+    <tr><td>ENIC-Kazakhstan — Registry of Educational Programmes (mirror/context page)</td><td>Institutional context for the registry's function and legal basis</td><td><a href="https://enic-kazakhstan.edu.kz/ru/registry_education_programs" target="_blank">enic-kazakhstan.edu.kz/ru/registry_education_programs</a></td></tr>
+    <tr><td>Order on Registry Rules (legal basis)</td><td>Official regulation governing inclusion/exclusion criteria for the registry</td><td><a href="https://adilet.zan.kz/rus/docs/V2200030139" target="_blank">adilet.zan.kz/rus/docs/V2200030139</a></td></tr>
+    <tr><td>Raw consolidated dataset (this project)</td><td>8,530-row export used for all WP1 deduplication and analysis</td><td><a href="https://raw.githubusercontent.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/main/data/processed/epvo/KZ_Programs_2026-07-27.csv" target="_blank">data/processed/epvo/KZ_Programs_2026-07-27.csv</a></td></tr>
+  </table>
+
+  <div class="src-group-title">WP1 analytical tables (this project)</div>
+  <table class="editorial compact">
+    <tr><th>Table</th><th>Content</th><th>Link</th></tr>
+    <tr><td>Table 01</td><td>University summary — top 15 by programme count</td><td><a href="https://raw.githubusercontent.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/main/reports/wp1/tables/Table_01_University_Summary.md" target="_blank">Table_01_University_Summary.md</a></td></tr>
+    <tr><td>Table 02</td><td>Regional statistics — 16 cities, programmes/tuition/English share</td><td><a href="https://raw.githubusercontent.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/main/reports/wp1/tables/Table_02_Regional_Statistics.md" target="_blank">Table_02_Regional_Statistics.md</a></td></tr>
+    <tr><td>Table 04</td><td>Tuition by degree level</td><td><a href="https://raw.githubusercontent.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/main/reports/wp1/tables/Table_04_Tuition_by_Level.md" target="_blank">Table_04_Tuition_by_Level.md</a></td></tr>
+    <tr><td>Table 05</td><td>Subject area overview</td><td><a href="https://raw.githubusercontent.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/main/reports/wp1/tables/Table_05_Subject_Area_Overview.md" target="_blank">Table_05_Subject_Area_Overview.md</a></td></tr>
+    <tr><td>Table 06</td><td>Data quality flags</td><td><a href="https://raw.githubusercontent.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/main/reports/wp1/tables/Table_06_Data_Quality_Flags.md" target="_blank">Table_06_Data_Quality_Flags.md</a></td></tr>
+    <tr><td>Full report</td><td>Higher Education Landscape Assessment (narrative)</td><td><a href="https://raw.githubusercontent.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/main/reports/wp1/Higher_Education_Landscape_Assessment.md" target="_blank">Higher_Education_Landscape_Assessment.md</a></td></tr>
+  </table>
+
+  <div class="src-group-title">Named university websites (for institutional verification)</div>
+  <table class="editorial compact">
+    <tr><th>University</th><th>Official site</th></tr>
+    <tr><td>Satbayev University (K. Satbayev KazNRTU)</td><td><a href="https://satbayev.university/en" target="_blank">satbayev.university/en</a></td></tr>
+    <tr><td>D. Serikbayev East Kazakhstan Technical University</td><td><a href="https://www.ektu.kz" target="_blank">ektu.kz</a></td></tr>
+    <tr><td>Nazarbayev University</td><td><a href="https://nu.edu.kz" target="_blank">nu.edu.kz</a></td></tr>
+    <tr><td>Kazakh Agrotechnical Research University (Seifullin)</td><td><a href="https://kazatu.edu.kz/en/" target="_blank">kazatu.edu.kz/en</a></td></tr>
+  </table>
+  <p class="note-inline">For universities not listed here, the OPVO registry link above is the authoritative source — each programme entry links through to its issuing university.</p>
+
+  <h2 class="section-title"><span class="section-num">WP2</span>Internationalisation</h2>
+
+  <div class="src-group-title">Primary institutional sources</div>
+  <table class="editorial compact">
+    <tr><th>Source</th><th>What it provides</th><th>Link</th></tr>
+    <tr><td>Ministry of Science and Higher Education of the RK (MSHE RK)</td><td>National Report data, infographics, Bolashak/grant statistics</td><td><a href="https://www.gov.kz/memleket/entities/sci?lang=ru" target="_blank">gov.kz/memleket/entities/sci</a></td></tr>
+    <tr><td>ENIC-Kazakhstan — National Report archive</td><td>"National Report on the State and Development of the HE System" (annual), source for Bolashak, Erasmus+, and CIS mobility sections</td><td><a href="https://enic-kazakhstan.edu.kz/ru/deyatelnost/nacionalnyy-doklad" target="_blank">enic-kazakhstan.edu.kz/ru/deyatelnost/nacionalnyy-doklad</a></td></tr>
+    <tr><td>ENIC-Kazakhstan — main portal</td><td>Central Asian Higher Education Space (CAHES) bilateral ties; international accreditation experts</td><td><a href="https://enic-kazakhstan.edu.kz" target="_blank">enic-kazakhstan.edu.kz</a></td></tr>
+  </table>
+
+  <div class="src-group-title">Processed data files (this project)</div>
+  <table class="editorial compact">
+    <tr><th>Folder</th><th>Content</th><th>Link</th></tr>
+    <tr><td>data/processed/CIS/</td><td>CIS Academic Mobility Background Report tables — inbound/outbound exchange, faculty exchange, hired specialists, joint/double-degree programmes, enrolled students</td><td><a href="https://github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/tree/main/data/processed/CIS" target="_blank">view folder</a></td></tr>
+    <tr><td>data/processed/enic-kazakhstan/</td><td>English-medium foreign students, scholarship programme, accreditation experts, CAHES ties</td><td><a href="https://github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/tree/main/data/processed/enic-kazakhstan" target="_blank">view folder</a></td></tr>
+    <tr><td>data/processed/international_partnerships_2025/</td><td>Branch campuses, partner countries, QS Asia ranking, regional campus map</td><td><a href="https://github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/tree/main/data/processed/international_partnerships_2025" target="_blank">view folder</a></td></tr>
+    <tr><td>data/processed/national report mobility mnvo/ERASMUS/</td><td>Erasmus+ ICM, PPVO, Jean Monnet, Erasmus Mundus data</td><td><a href="https://github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/tree/main/data/processed/national%20report%20mobility%20mnvo/ERASMUS" target="_blank">view folder</a></td></tr>
+    <tr><td>data/processed/national report mobility mnvo/bolashak_and_grants_2024/</td><td>Bolashak cumulative/current, grant channels A &amp; B, research internships</td><td><a href="https://github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/tree/main/data/processed/national%20report%20mobility%20mnvo/bolashak_and_grants_2024" target="_blank">view folder</a></td></tr>
+  </table>
+
+  <div class="src-group-title">UNESCO UIS &amp; Migration Data Portal — international student mobility (cross-check)</div>
+  <table class="editorial compact">
+    <tr><th>Source</th><th>What it provides</th><th>Link</th></tr>
+    <tr><td>UNESCO UIS Data Browser</td><td>Global education statistics browser — entry point for all UIS indicators</td><td><a href="https://databrowser.uis.unesco.org/browser" target="_blank">databrowser.uis.unesco.org/browser</a></td></tr>
+    <tr><td>UNESCO UIS — Inbound internationally mobile students (indicator MENF.5T8)</td><td>Direct indicator view used for this project's inbound/outbound mobility cross-check</td><td><a href="https://databrowser.uis.unesco.org/view#indicatorPaths=UIS-EducationOPRI%3A0%3AMENF.5T8&geoMode=countries&browsePath=EDUCATION%2FUIS-EducationOPRI%2Fint-stud%2Fmobility&timeMode=range&view=table&chartMode=multiple&tableIndicatorId=MENF.5T8&chartIndicatorId=MENF.5T8" target="_blank">databrowser.uis.unesco.org/view (MENF.5T8)</a></td></tr>
+    <tr><td>Migration Data Portal — international students, inbound</td><td>Kazakhstan as destination country, by year</td><td><a href="https://www.migrationdataportal.org/international-data?i=stud_in_&t=2022" target="_blank">migrationdataportal.org/international-data?i=stud_in_</a></td></tr>
+    <tr><td>Migration Data Portal — international students, outbound</td><td>Kazakhstan as origin country, by year — data available here even where inbound/destination data for Kazakhstan is missing</td><td><a href="https://www.migrationdataportal.org/international-data?i=stud_out_&t=2022&cm49=398" target="_blank">migrationdataportal.org/international-data?i=stud_out_</a></td></tr>
+    <tr><td>Migration Data Portal — thematic overview</td><td>Background reading: global trends in international student mobility</td><td><a href="https://www.migrationdataportal.org/themes/international-students-trends" target="_blank">migrationdataportal.org/themes/international-students-trends</a></td></tr>
+    <tr><td>UNESCO — "Number of students in higher education more than doubled in 20 years"</td><td>Global context: ~7.3 million students studying abroad by 2024 (up from 2.1 million in 2000); seven countries host half of all international students</td><td><a href="https://www.unesco.org/en/articles/number-students-higher-education-more-doubled-20-years-inequalities-remain" target="_blank">unesco.org/en/articles/...</a></td></tr>
+  </table>
+  <div class="note-inline caution">This project's earlier UNESCO UIS / UN DESA analysis (an exploratory phase preceding the CIS Academic Mobility Background Report, which became the primary WP2 source) found <strong>30,254</strong> inbound students to Kazakhstan (2024) and <strong>78,551</strong> outbound (2023, Russia ~62% of outbound flows) — both larger than, and methodologically distinct from, the CIS-only exchange figures presented on the Internationalisation page. Kept here as a separate, differently-scoped source rather than merged into the CIS mobility numbers.</div>
+
+  <h2 class="section-title"><span class="section-num">WP3</span>Demography &amp; Migration</h2>
+
+  <div class="src-group-title">Primary institutional sources</div>
+  <table class="editorial compact">
+    <tr><th>Source</th><th>What it provides</th><th>Link</th></tr>
+    <tr><td>Bureau of National Statistics of the RK (BNS) — main portal</td><td>All national demographic statistics</td><td><a href="https://stat.gov.kz/ru/" target="_blank">stat.gov.kz</a></td></tr>
+    <tr><td>BNS — Demographic statistics section</td><td>Births, deaths, natural growth, migration, population by region</td><td><a href="https://stat.gov.kz/ru/industries/social-statistics/demography/" target="_blank">stat.gov.kz/ru/industries/social-statistics/demography</a></td></tr>
+    <tr><td>BNS — Demographic spreadsheets</td><td>Downloadable tables: population, migration, natural movement</td><td><a href="https://stat.gov.kz/ru/industries/social-statistics/demography/spreadsheets/" target="_blank">stat.gov.kz/.../demography/spreadsheets</a></td></tr>
+    <tr><td>BNS — Open data portal</td><td>Licensed open datasets, including region-level historical population</td><td><a href="https://stat.gov.kz/ru/open-data/demography/474249/" target="_blank">stat.gov.kz/ru/open-data/demography/474249</a></td></tr>
+    <tr><td>TALDAU (BNS statistical database)</td><td>Interactive query tool — age structure, KSP 611111 series</td><td><a href="https://taldau.stat.gov.kz/ru/NewIndex/GetIndex/703831" target="_blank">taldau.stat.gov.kz</a></td></tr>
+    <tr><td>UN Population Division — World Population Prospects</td><td>Cross-check reference for national population totals</td><td><a href="https://population.un.org/wpp/" target="_blank">population.un.org/wpp</a></td></tr>
+    <tr><td>World Bank Open Data — Kazakhstan</td><td>Population indicators used for indexed trend comparison (Overview page)</td><td><a href="https://data.worldbank.org/country/kazakhstan" target="_blank">data.worldbank.org/country/kazakhstan</a></td></tr>
+  </table>
+  <div class="src-group-title">Processed data files (this project)</div>
+  <table class="editorial compact">
+    <tr><th>File / Folder</th><th>Content</th><th>Link</th></tr>
+    <tr><td>data/processed/BNS/</td><td>Full folder — births, deaths, natural growth, age structure, regional migration, all national time series 1991-2025</td><td><a href="https://github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/tree/main/data/processed/BNS" target="_blank">view folder</a></td></tr>
+    <tr><td>Table 04 (WP3)</td><td>Regional population, 2025</td><td><a href="https://raw.githubusercontent.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/main/reports/wp3/tables/Table_04_Regional_Population_2025.md" target="_blank">Table_04_Regional_Population_2025.md</a></td></tr>
+    <tr><td>Table 05 (WP3)</td><td>Regional age structure, 2024</td><td><a href="https://raw.githubusercontent.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/main/reports/wp3/tables/Table_05_Regional_Age_Structure_2024.md" target="_blank">Table_05_Regional_Age_Structure_2024.md</a></td></tr>
+    <tr><td>Table 07 (WP3)</td><td>Interregional migration by region (arrivals, departures, net)</td><td><a href="https://raw.githubusercontent.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/main/reports/wp3/tables/Table_07_Interregional_Migration_by_Region.md" target="_blank">Table_07_Interregional_Migration_by_Region.md</a></td></tr>
+    <tr><td>Table 08 (WP1×WP3)</td><td>Supply/demand mismatch table — basis for the Cross-Analysis page</td><td><a href="https://raw.githubusercontent.com/elvirkaaa/kazakhstan-higher-education-market-intelligence/main/reports/wp3/tables/Table_08_WP1_WP3_Supply_Demand_Mismatch.md" target="_blank">Table_08_WP1_WP3_Supply_Demand_Mismatch.md</a></td></tr>
+  </table>
+
+  <div class="src-group-title">Geographic boundary data</div>
+  <table class="editorial compact">
+    <tr><th>Source</th><th>What it provides</th><th>Link</th></tr>
+    <tr><td>UNHCR/UNFPA administrative boundaries, Kazakhstan (2023)</td><td>Post-2022 20-region boundary geometry, used on Higher Education, Regional Migration, and Cross-Analysis pages</td><td>Provided as shapefile by project supervisor; converted to GeoJSON for this project</td></tr>
+    <tr><td>open-data-kazakhstan/geo-boundaries-kz (GADM-derived)</td><td>Pre-reform 14-region boundary geometry, used for the boundary-change toggle</td><td><a href="https://github.com/open-data-kazakhstan/geo-boundaries-kz" target="_blank">github.com/open-data-kazakhstan/geo-boundaries-kz</a></td></tr>
+  </table>
+
+  <h2 class="section-title"><span class="section-num">Project</span>This project's own repository</h2>
+  <p class="chart-desc">All processed data, analytical tables, and dashboard files referenced throughout this project are version-controlled and publicly viewable.</p>
+  <table class="editorial compact">
+    <tr><th>Repository</th><th>Link</th></tr>
+    <tr><td>Kazakhstan Higher Education Market Intelligence (GitHub)</td><td><a href="https://github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence" target="_blank">github.com/elvirkaaa/kazakhstan-higher-education-market-intelligence</a></td></tr>
+  </table>
+
+  <div class="note-inline caution" style="margin-top:24px;">Some source publications carry internally inconsistent figures for the same period (e.g. CIS-vs-Asia international student totals, Bolashak level-breakdown sums). Where this occurs, both/all figures are preserved and flagged rather than silently reconciled — see the Methodology page for the specific cases.</div>
+
+  <footer class="site-foot">Kazakhstan Higher Education Market Intelligence — prepared for AZM Education.</footer>
+</div>
+</body>
+</html>

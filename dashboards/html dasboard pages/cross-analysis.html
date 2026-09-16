@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cross-Analysis — Kazakhstan Education &amp; Migration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<style>
+.editorial.compact th{cursor:pointer;user-select:none;}
+.editorial.compact th:hover{background:var(--border);}
+.editorial.compact th .sort-arrow{font-size:10px;margin-left:4px;color:var(--warmgrey);}
+.editorial.compact th.sort-active .sort-arrow{color:var(--forest);}
+</style>
+
+
+<style>
+#scatter-wrap{position:relative;height:520px;margin:20px 0;}
+.legend-manual{display:flex;gap:20px;font-size:12px;color:var(--ink-soft);margin-top:6px;flex-wrap:wrap;}
+
+/* Four-quadrant market position table */
+.quad-grid{display:grid;grid-template-columns:140px 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin:16px 0;}
+.quad-cell{background:var(--paper);padding:16px;min-height:70px;}
+.quad-header{background:#fff;font-family:"Space Grotesk";font-size:11.5px;font-weight:600;color:var(--ink-soft);display:flex;align-items:center;}
+.quad-label{font-family:"Space Grotesk";font-weight:700;font-size:13px;margin-bottom:8px;}
+.quad-regions{font-size:12px;color:var(--ink-soft);line-height:1.6;}
+.quad-aligned .quad-label{color:var(--forest);}
+.quad-gap .quad-label{color:var(--terracotta);}
+.quad-gap{background:#faf1ec;}
+.quad-concentrated .quad-label{color:var(--gold);}
+.quad-lower .quad-label{color:var(--warmgrey);}
+@media (max-width:700px){.quad-grid{grid-template-columns:1fr;}.quad-header:first-child{display:none;}}
+
+/* Region profile panel (click-to-reveal) */
+.region-profile{border:2px solid var(--ink);background:#fff;padding:24px 26px;margin:20px 0;}
+.region-profile .rp-title{font-family:"Space Grotesk";font-size:20px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.region-profile .rp-position{font-family:"Space Grotesk";font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin-bottom:16px;}
+.rp-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;}
+.rp-metric .rp-num{font-family:"Space Grotesk";font-size:22px;font-weight:700;color:var(--ink);}
+.rp-metric .rp-lbl{font-size:10.5px;color:var(--warmgrey);text-transform:uppercase;letter-spacing:.04em;margin-top:2px;}
+.rp-why{font-size:13px;color:var(--ink-soft);line-height:1.6;border-top:1px solid var(--border);padding-top:14px;}
+.rp-close{float:right;background:none;border:none;font-size:13px;color:var(--warmgrey);cursor:pointer;font-family:"Space Grotesk";}
+.rp-close:hover{color:var(--ink);}
+@media (max-width:700px){.rp-metrics{grid-template-columns:repeat(2,1fr);}}
+.legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;}
+.case-strip{border-top:2px solid var(--ink);margin-top:10px;}
+.case-row{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:26px 0;border-bottom:1px solid var(--border);align-items:start;}
+.case-row .case-name{font-family:"Space Grotesk";font-weight:600;font-size:17px;color:var(--ink);}
+.case-row .case-stats-line{display:flex;gap:26px;margin:10px 0;flex-wrap:wrap;}
+.case-row .case-stats-line .cs{font-family:"Space Grotesk";}
+.case-row .case-stats-line .cs .n{font-size:22px;font-weight:700;}
+.case-row .case-stats-line .cs .n.red{color:var(--terracotta);}
+.case-row .case-stats-line .cs .n.blue{color:var(--forest);}
+.case-row .case-stats-line .cs .l{font-size:10.5px;color:var(--warmgrey);text-transform:uppercase;letter-spacing:.04em;}
+.case-row .case-text{font-size:13.5px;color:var(--ink-soft);line-height:1.55;}
+@media (max-width:760px){.case-row{grid-template-columns:1fr;gap:8px;}}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">Kazakhstan<span class="sub">Education &amp; Migration</span></div>
+  <nav>
+    <a href="index.html"><span class="num">01</span>Overview</a>
+    <a href="higher-education.html"><span class="num">02</span>Education Supply</a>
+    <a href="internationalisation.html"><span class="num">03</span>Internationalisation</a>
+    <a href="demographics.html"><span class="num">04</span>Demographic Demand</a>
+    <a href="cross-analysis.html" class="active"><span class="num">05</span>Supply × Demand</a>
+    <a href="findings.html"><span class="num">06</span>Strategic Implications</a>
+  </nav>
+  <div class="foot">
+    <div class="foot-label">Appendix</div>
+    <a href="data-method.html">Data &amp; Methods</a>
+    <a href="methodology.html">Data Quality &amp; Methodology</a>
+    <a href="sources.html">Sources</a>
+    <a href="about.html">About</a>
+  </div>
+</div>
+
+<div class="main">
+  <div class="eyebrow">Supply × Demand</div>
+  <h1 class="page-title">Where do demand and supply diverge?</h1>
+  <p class="lede">Youth population and higher-education programme supply, region by region — combining two independent datasets to see where they visibly do not line up.</p>
+  <div class="meta-line">Data period: WP1 2026 × WP3 2024/25 · Regions: post-2022 (20)</div>
+
+  <div class="finding-strip">
+    <div class="label">Central finding</div>
+    <p>Higher youth-population concentration <strong>does not correspond</strong> to higher local higher-education provision. The regions with the largest young populations — Turkistan, Mangystau, Shymkent city — hold almost none of the country's programme supply, whereas Almaty and East Kazakhstan, with below-average youth shares, hold the most. This is a spatial relationship; it does not, on its own, demonstrate causation.</p>
+  </div>
+
+  <h2 class="section-title"><span class="section-num">01 · The Pattern</span>Youth population share vs. higher-education programme share, by region</h2>
+  <p class="chart-desc">Each bubble is one of Kazakhstan's 20 regions. X-axis: share of population aged 0-15 (2024). Y-axis: share of national HE programme supply (2026). Bubble size: total population (2025). <strong>Click any bubble for that region's full profile.</strong></p>
+  <div class="note-inline caution"><strong>How the comparison is built.</strong> Supply Share<sub>r</sub> = Programmes<sub>r</sub> ÷ Programmes<sub>national</sub>. Youth Share<sub>r</sub> = Youth Population<sub>r</sub> ÷ Population<sub>r</sub> (population aged 0-15). Both use the current 20-region (post-2022) boundary structure; supply data is 2026, demographic data is 2024. A simple Gap<sub>r</sub> = Supply Share<sub>r</sub> − Youth Share<sub>r</sub> is <em>not</em> used as the headline metric here, because that difference would be dominated by Almaty's extreme supply share and say little about the other 19 regions — the median-threshold quadrant classification and z-score Alignment Index below are more informative ways to compare 20 regions of very different sizes. This is a relative, descriptive comparison — not a measure of unmet demand.</div>
+  <div id="scatter-wrap"><canvas id="scatter"></canvas></div>
+  <div class="legend-manual">
+    <span><span class="legend-dot" style="background:#B65C3A;"></span>Turkistan, Almaty, Astana, Shymkent (named on chart)</span>
+    <span><span class="legend-dot" style="background:#A9A49A;"></span>All other regions</span>
+  </div>
+  <div class="source-line">Sources: WP1 — OPVO/EPVO Registry (2026), Table 9.1. WP3 — BNS regional age structure, 2024; TALDAU, KSP 611111, 2025.</div>
+
+  <h3 class="chart-title" style="margin-top:30px;">Four market positions</h3>
+  <p class="chart-desc">Regions classified by whether they sit above or below the national median on each axis. Thresholds are computed from the data, not chosen by hand.</p>
+  <div class="quad-grid">
+    <div class="quad-cell quad-header"></div>
+    <div class="quad-cell quad-header">High supply <span style="font-weight:400;color:var(--warmgrey);">(≥0.6% median)</span></div>
+    <div class="quad-cell quad-header">Low supply</div>
+    <div class="quad-cell quad-header">High youth share <span style="font-weight:400;color:var(--warmgrey);">(≥30.65% median)</span></div>
+    <div class="quad-cell quad-aligned"><div class="quad-label">Aligned</div><div class="quad-regions" id="quad-aligned"></div></div>
+    <div class="quad-cell quad-gap"><div class="quad-label">Potential gap</div><div class="quad-regions" id="quad-gap"></div></div>
+    <div class="quad-cell quad-header">Low youth share</div>
+    <div class="quad-cell quad-concentrated"><div class="quad-label">Concentrated supply</div><div class="quad-regions" id="quad-concentrated"></div></div>
+    <div class="quad-cell quad-lower"><div class="quad-label">Lower priority</div><div class="quad-regions" id="quad-lower"></div></div>
+  </div>
+  <div class="note-inline caution">"High supply" here means above the median of a highly skewed distribution (national median is just 0.6% of programme share, because one region — Almaty — holds 70.75%). It signals relative position among the other 19 regions, not a large absolute share. Click any bubble on the chart above for that region's full profile.</div>
+
+  <div id="region-profile" class="region-profile" style="display:none;"></div>
+
+  <div class="finding-strip" style="border-top-color:var(--terracotta);">
+    <div class="label" style="color:var(--terracotta);">Potential Market Gap — above-median youth share, below-median programme supply</div>
+    <p id="market-gap-list" style="font-size:16px;"></p>
+    <div class="note-inline" style="margin-top:10px;">As above: a descriptive classification, not evidence of unmet demand.</div>
+  </div>
+
+  <h2 class="section-title"><span class="section-num">02 · Testing the Relationship</span>How strong is the pattern, actually?</h2>
+  <p class="chart-desc">A visual pattern is not the same as a tested relationship. Pearson's r (sensitive to the Almaty outlier) and Spearman's rho (rank-based, more robust to outliers) are reported together — where they disagree sharply, that disagreement is itself informative.</p>
+  <table class="editorial compact">
+    <tr><th>Relationship</th><th>Pearson r</th><th>Spearman ρ</th><th>Reading</th></tr>
+    <tr><td>Youth share ↔ HE supply share</td><td>-0.19</td><td>-0.36</td><td>Weak, slightly negative — no support for "more youth → more supply"</td></tr>
+    <tr><td>Natural growth ↔ HE supply share</td><td>-0.05</td><td>-0.21</td><td>Essentially no relationship</td></tr>
+    <tr><td>Net migration ↔ HE supply share</td><td>+0.36</td><td>+0.01</td><td>Pearson suggests a weak positive link; Spearman shows almost none — the correlation is driven by one or two extreme regions (Astana, Almaty), not a general pattern</td></tr>
+  </table>
+  <p class="note-inline">Correlation coefficients do not establish causation, and with only 20 regional observations, these results are indicative rather than statistically decisive. The principal finding here is a negative one: none of the three demographic indicators tested shows a relationship with programme supply that is both meaningful in magnitude and robust to the removal of outlying regions.</p>
+
+  <h3 class="chart-title" style="margin-top:30px;">Regional Alignment Index</h3>
+  <p class="chart-desc">A screening indicator, not a market-opportunity score: for each region, the average z-score of demand-side measures (youth share, natural growth) minus the average z-score of supply-side measures (programme share, programme count). Positive = demand pressure relatively high, supply relatively low. Computed directly from the values already shown above — no new data introduced.</p>
+  <div id="alignment-ranking"></div>
+  <div class="note-inline caution">This index identifies where demographic pressure and recorded supply diverge most strongly — it does not measure unmet demand, market opportunity, or capacity shortfall, none of which this project's data can establish. Turkistan (+1.82) and Almaty (-4.57) are the two clearest exceptions to a simple "more youth → more supply" expectation — see their profiles below.</div>
+
+  <h2 class="section-title"><span class="section-num">03 · Four Regions Worth Naming</span>Not a ranking — four regions at the extremes of the pattern</h2>
+  <div class="case-strip">
+    <div class="case-row">
+      <div class="case-name">Turkistan<br><span style="font-weight:400;font-size:12px;color:var(--warmgrey);">Highest youth, almost no supply · Alignment +1.82</span></div>
+      <div>
+        <div class="case-stats-line">
+          <div class="cs"><div class="n red">39.5%</div><div class="l">Youth share (highest)</div></div>
+          <div class="cs"><div class="n red">1.1%</div><div class="l">Of HE supply</div></div>
+          <div class="cs"><div class="n">2.15M</div><div class="l">Population</div></div>
+        </div>
+        <div class="case-text">The region with the largest young population outside Almaty city holds roughly the same programme share as regions one-tenth its size — the clearest case in the data of demographic pressure outrunning recorded local provision.</div>
+      </div>
+    </div>
+    <div class="case-row">
+      <div class="case-name">Almaty<br><span style="font-weight:400;font-size:12px;color:var(--warmgrey);">Below-average youth, dominant supply · Alignment -4.57</span></div>
+      <div>
+        <div class="case-stats-line">
+          <div class="cs"><div class="n blue">27.4%</div><div class="l">Youth share (below avg. 31.2%)</div></div>
+          <div class="cs"><div class="n blue">70.7%</div><div class="l">Of HE supply</div></div>
+          <div class="cs"><div class="n">2.35M</div><div class="l">Population (largest)</div></div>
+        </div>
+        <div class="case-text">Almaty's dominance in supply is not explained by having the youngest population. A plausible hypothesis is that it serves demand drawn from other regions — but this dataset cannot test that; it would require student origin vs. study-location data, which does not exist in the sources used.</div>
+      </div>
+    </div>
+    <div class="case-row">
+      <div class="case-name">Astana<br><span style="font-weight:400;font-size:12px;color:var(--warmgrey);">Strong in-migration, modest supply</span></div>
+      <div>
+        <div class="case-stats-line">
+          <div class="cs"><div class="n blue">+87,459</div><div class="l">Net migration (highest)</div></div>
+          <div class="cs"><div class="n">5.8%</div><div class="l">Of HE supply</div></div>
+          <div class="cs"><div class="n">30.4%</div><div class="l">Youth share (near avg.)</div></div>
+        </div>
+        <div class="case-text">Astana records the strongest population in-migration in the country and also hosts a growing share of foreign branch campuses. <strong>This co-location may indicate a relationship worth investigating</strong> — the data cannot establish that people are moving to Astana <em>for</em> education, only that both trends occur in the same place.</div>
+      </div>
+    </div>
+    <div class="case-row">
+      <div class="case-name">Shymkent city<br><span style="font-weight:400;font-size:12px;color:var(--warmgrey);">Young, growing, thin supply</span></div>
+      <div>
+        <div class="case-stats-line">
+          <div class="cs"><div class="n red">37.4%</div><div class="l">Youth share</div></div>
+          <div class="cs"><div class="n blue">+15,130</div><div class="l">Net migration</div></div>
+          <div class="cs"><div class="n red">1.4%</div><div class="l">Of HE supply</div></div>
+        </div>
+        <div class="case-text">Shymkent combines three of the pattern's ingredients — young population, net in-migration, and thin local supply — more visibly than any other single region.</div>
+      </div>
+    </div>
+  </div>
+  <div class="gap-note">Every claim above is a statement of spatial co-occurrence in the data, not a demonstrated cause. Migration figures measure total population movement, not student movement specifically — no source in this project tracks the reason any individual migrated.</div>
+
+  <h2 class="section-title"><span class="section-num">04 · Full Comparison</span>All 20 regions, side by side</h2>
+  <p class="chart-desc">All figures use the current 20-region (post-2022) boundary structure. University-level counts are not included: no verified per-region university count exists across all 20 regions in this project's sources (only the institution-level detail shown on Education Supply).</p>
+  <table class="editorial compact" id="full-table"></table>
+  <div class="source-line">Sources: WP1 Table 9.1 (HE programme share); BNS regional age structure, 2024; BNS interregional migration table.</div>
+
+  <h2 class="section-title"><span class="section-num">05 · Scope</span>What this analysis does and does not show</h2>
+  <div class="split-50-50">
+    <div>
+      <h3 class="chart-title" style="font-size:14px;">This analysis shows</h3>
+      <ul style="font-size:13px;line-height:1.8;padding-left:18px;margin:0;color:var(--ink-soft);">
+        <li>Where youth population and HE programme supply are co-located, and where they are not</li>
+        <li>Which regions combine high youth share with low supply</li>
+        <li>Which regions combine high net in-migration with either high or low supply</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="chart-title" style="font-size:14px;">This analysis does not show</h3>
+      <ul style="font-size:13px;line-height:1.8;padding-left:18px;margin:0;color:var(--ink-soft);">
+        <li>Why supply is concentrated where it is (causality)</li>
+        <li>Whether migrants are students, or migrate for education-related reasons at all</li>
+        <li>Unmet demand in any quantified sense — programme registrations are not student enrolments</li>
+        <li>Physical or financial accessibility of existing supply</li>
+        <li>Household income, tuition affordability, transport, or student preference — none are captured in this dataset</li>
+        <li>A single consistent year: supply data is 2026, demographic data is 2024-2025 — treated as roughly concurrent, not identical</li>
+      </ul>
+    </div>
+  </div>
+  <div class="finding-strip">
+    <div class="label">Why this matters for AZM</div>
+    <p>Regions combining a young, growing population with limited local supply are plausible candidates for further market investigation — expansion or capacity development among them. Confirming that requires demand-side research (applications, enrolment intentions, affordability) that this dataset does not contain.</p>
+  </div>
+
+  <footer class="site-foot">Kazakhstan Higher Education Market Intelligence — prepared for AZM Education · All figures sourced; see Methodology and Data Sources.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+const REGION_DATA = [
+  {name:"Almaty city", pop:2348103, youth:27.4, heShare:70.75, net:33126, growth:8.4, programmes:1710, highlight:true},
+  {name:"Turkistan", pop:2149205, youth:39.5, heShare:1.08, net:-42649, growth:17.4, programmes:26, highlight:true},
+  {name:"Astana", pop:1639176, youth:30.4, heShare:5.79, net:87459, growth:13.0, programmes:140, highlight:true},
+  {name:"Almaty Region", pop:1596532, youth:33.1, heShare:0.0, net:12110, growth:11.8, programmes:0, highlight:false},
+  {name:"Shymkent city", pop:1294050, youth:37.4, heShare:1.41, net:15130, growth:17.3, programmes:34, highlight:true},
+  {name:"Zhambyl", pop:1215656, youth:34.7, heShare:0.87, net:-21179, growth:12.1, programmes:21, highlight:false},
+  {name:"Karaganda", pop:1131353, youth:25.3, heShare:0.08, net:-5387, growth:2.8, programmes:2, highlight:false},
+  {name:"Aktobe", pop:955970, youth:32.2, heShare:0.0, net:-4216, growth:10.7, programmes:0, highlight:false},
+  {name:"Kyzylorda", pop:846312, youth:36.4, heShare:0.74, net:-11913, growth:14.3, programmes:18, highlight:false},
+  {name:"Kostanay", pop:821473, youth:22.6, heShare:1.45, net:-4499, growth:-0.0, programmes:35, highlight:false},
+  {name:"Mangystau", pop:819824, youth:38.7, heShare:0.0, net:-2672, growth:17.0, programmes:0, highlight:false},
+  {name:"Akmola", pop:789608, youth:25.7, heShare:0.21, net:292, growth:2.7, programmes:5, highlight:false},
+  {name:"Pavlodar", pop:745243, youth:24.7, heShare:5.25, net:-7661, growth:1.8, programmes:127, highlight:false},
+  {name:"Atyrau", pop:716071, youth:35.8, heShare:0.04, net:-5424, growth:14.4, programmes:1, highlight:false},
+  {name:"East Kazakhstan", pop:718995, youth:22.8, heShare:10.05, net:-4248, growth:-0.9, programmes:243, highlight:false},
+  {name:"West Kazakhstan", pop:695649, youth:28.6, heShare:0.0, net:-4989, growth:6.7, programmes:0, highlight:false},
+  {name:"Zhetisu", pop:687701, youth:32.0, heShare:0.12, net:-13018, growth:8.4, programmes:3, highlight:false},
+  {name:"Abay", pop:595720, youth:28.0, heShare:1.08, net:-9856, growth:4.7, programmes:26, highlight:false},
+  {name:"North Kazakhstan", pop:514132, youth:21.5, heShare:0.46, net:-6441, growth:-2.7, programmes:11, highlight:false},
+  {name:"Ulytau", pop:219049, youth:30.9, heShare:0.0, net:-3965, growth:8.0, programmes:0, highlight:false}
+];
+
+const maxPop = Math.max(...REGION_DATA.map(d => d.pop));
+function radiusFor(pop){ return 5 + 30 * Math.sqrt(pop / maxPop); }
+
+// Quadrant thresholds: computed as the median across all 20 regions, not manually chosen.
+function median(arr){
+  const s = [...arr].sort((a,b)=>a-b);
+  const mid = Math.floor(s.length/2);
+  return s.length % 2 === 0 ? (s[mid-1]+s[mid])/2 : s[mid];
+}
+const QUADRANT_MEDIANS = {
+  youth: median(REGION_DATA.map(d => d.youth)),
+  heShare: median(REGION_DATA.map(d => d.heShare))
+};
+const MARKET_GAP_REGIONS = REGION_DATA.filter(d => d.youth >= QUADRANT_MEDIANS.youth && d.heShare < QUADRANT_MEDIANS.heShare).map(d => d.name);
+document.getElementById('market-gap-list').textContent = MARKET_GAP_REGIONS.join(', ');
+
+// Populate the four-quadrant table — same threshold logic as MARKET_GAP_REGIONS above, applied to all four combinations.
+function quadrantOf(d){
+  const highYouth = d.youth >= QUADRANT_MEDIANS.youth;
+  const highSupply = d.heShare >= QUADRANT_MEDIANS.heShare;
+  if (highYouth && highSupply) return 'aligned';
+  if (highYouth && !highSupply) return 'gap';
+  if (!highYouth && highSupply) return 'concentrated';
+  return 'lower';
+}
+const QUADRANT_LABEL = {aligned:'Aligned', gap:'Potential gap', concentrated:'Concentrated supply', lower:'Lower priority'};
+const quadGroups = {aligned:[], gap:[], concentrated:[], lower:[]};
+REGION_DATA.forEach(d => quadGroups[quadrantOf(d)].push(d.name));
+Object.keys(quadGroups).forEach(k => {
+  document.getElementById('quad-' + k).textContent = quadGroups[k].join(', ');
+});
+
+// Regional Alignment Index — z-score screening indicator computed directly from REGION_DATA.
+// Not a market-opportunity score; see the caution note in the HTML for what it does not measure.
+function mean(arr){ return arr.reduce((s,v)=>s+v,0) / arr.length; }
+function pstdev(arr){ const m = mean(arr); return Math.sqrt(mean(arr.map(v => (v-m)**2))); }
+function zscoreArr(arr){ const m = mean(arr), s = pstdev(arr); return arr.map(v => (v-m)/s); }
+
+const zYouth = zscoreArr(REGION_DATA.map(d => d.youth));
+const zGrowth = zscoreArr(REGION_DATA.map(d => d.growth));
+const zHeShare = zscoreArr(REGION_DATA.map(d => d.heShare));
+const zProgrammes = zscoreArr(REGION_DATA.map(d => d.programmes));
+
+const ALIGNMENT_DATA = REGION_DATA.map((d, i) => {
+  const demandZ = (zYouth[i] + zGrowth[i]) / 2;
+  const supplyZ = (zHeShare[i] + zProgrammes[i]) / 2;
+  return {name: d.name, alignment: demandZ - supplyZ};
+}).sort((a,b) => b.alignment - a.alignment);
+
+const alignEl = document.getElementById('alignment-ranking');
+const maxAbsAlign = Math.max(...ALIGNMENT_DATA.map(d => Math.abs(d.alignment)));
+ALIGNMENT_DATA.forEach(d => {
+  const pct = Math.round(100 * Math.abs(d.alignment) / maxAbsAlign);
+  const color = d.alignment >= 0 ? '#1F5C4F' : '#B65C3A';
+  const row = document.createElement('div');
+  row.className = 'rank-row';
+  row.innerHTML = `<div class="rank-label">${d.name}</div><div class="rank-track"><div class="rank-fill" style="width:${pct}%;background:${color}"></div></div><div class="rank-value" style="color:${color}">${d.alignment>0?'+':''}${d.alignment.toFixed(2)}</div>`;
+  alignEl.appendChild(row);
+});
+
+// Region Profile panel — populated on bubble click with only metrics that genuinely exist and are comparable.
+function showRegionProfile(d){
+  const q = quadrantOf(d);
+  const panel = document.getElementById('region-profile');
+  const netLabel = d.net >= 0 ? 'Net in-migration' : 'Net out-migration';
+  let why;
+  if (q === 'gap') why = `${d.name} combines an above-median youth population share with a below-median share of recorded higher-education programme supply. This makes it a candidate for further investigation, not evidence of unmet demand.`;
+  else if (q === 'aligned') why = `${d.name} sits above the national median on both youth share and recorded programme supply — among the stronger-positioned regions in this comparison, though "high supply" here is relative to a very skewed national distribution.`;
+  else if (q === 'concentrated') why = `${d.name} holds an above-median share of recorded programme supply despite a below-median youth population share — supply here is not primarily explained by local demographic pressure.`;
+  else why = `${d.name} sits below the national median on both youth share and recorded programme supply.`;
+
+  panel.innerHTML = `
+    <button class="rp-close" onclick="document.getElementById('region-profile').style.display='none'">✕ Close</button>
+    <div class="rp-title">${d.name}</div>
+    <div class="rp-position" style="color:${q==='gap'?'var(--terracotta)':q==='aligned'?'var(--forest)':q==='concentrated'?'var(--gold)':'var(--warmgrey)'}">${QUADRANT_LABEL[q]}</div>
+    <div class="rp-metrics">
+      <div class="rp-metric"><div class="rp-num">${d.pop.toLocaleString()}</div><div class="rp-lbl">Population</div></div>
+      <div class="rp-metric"><div class="rp-num">${d.youth}%</div><div class="rp-lbl">Youth (0-15) share</div></div>
+      <div class="rp-metric"><div class="rp-num">${d.growth>0?'+':''}${d.growth}</div><div class="rp-lbl">Natural growth /1,000</div></div>
+      <div class="rp-metric"><div class="rp-num">${d.net>0?'+':''}${d.net.toLocaleString()}</div><div class="rp-lbl">${netLabel}</div></div>
+      <div class="rp-metric"><div class="rp-num">${d.heShare}%</div><div class="rp-lbl">Share of HE supply</div></div>
+      <div class="rp-metric"><div class="rp-num">${d.programmes}</div><div class="rp-lbl">Programmes recorded</div></div>
+    </div>
+    <div class="rp-why"><strong>Why it matters:</strong> ${why}</div>
+  `;
+  panel.style.display = 'block';
+  panel.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+new Chart(document.getElementById('scatter'), {
+  type: 'bubble',
+  data: {
+    datasets: [{
+      label: 'Regions',
+      data: REGION_DATA.map(d => ({x: d.youth, y: d.heShare, r: radiusFor(d.pop), name: d.name, highlight: d.highlight})),
+      backgroundColor: REGION_DATA.map(d => d.highlight ? 'rgba(182,92,58,0.65)' : 'rgba(169,164,154,0.4)'),
+      borderColor: REGION_DATA.map(d => d.highlight ? '#B65C3A' : '#A9A49A'),
+      borderWidth: 1.5
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    onClick: function(evt, elements){
+      if (!elements.length) return;
+      const idx = elements[0].index;
+      showRegionProfile(REGION_DATA[idx]);
+    },
+    onHover: function(evt, elements){
+      evt.native.target.style.cursor = elements.length ? 'pointer' : 'default';
+    },
+    plugins: {
+      legend: {display: false},
+      tooltip: {
+        callbacks: {
+          label: function(ctx){
+            const d = ctx.raw;
+            return `${d.name}: ${d.x}% youth share, ${d.y}% of HE supply`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {title: {display:true, text:'Share of population aged 0-15 (%)', font:{size:12}}, min:18, max:42},
+      y: {title: {display:true, text:'Share of national HE programme supply (%)', font:{size:12}}, min:-3, max:75}
+    }
+  },
+  plugins: [{
+    id: 'quadrants',
+    beforeDatasetsDraw(chart){
+      const {ctx, chartArea, scales} = chart;
+      const xMed = QUADRANT_MEDIANS.youth, yMed = QUADRANT_MEDIANS.heShare;
+      const xPix = scales.x.getPixelForValue(xMed);
+      const yPix = scales.y.getPixelForValue(yMed);
+      ctx.save();
+      ctx.strokeStyle = '#DDD7C6';
+      ctx.setLineDash([4,4]);
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(xPix, chartArea.top); ctx.lineTo(xPix, chartArea.bottom);
+      ctx.moveTo(chartArea.left, yPix); ctx.lineTo(chartArea.right, yPix);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.font = '600 10.5px Space Grotesk';
+      ctx.fillStyle = '#A9A49A';
+      ctx.textBaseline = 'top';
+      ctx.fillText('LOW DEMAND · HIGH SUPPLY', chartArea.left+8, chartArea.top+6);
+      ctx.textAlign = 'right';
+      ctx.fillText('HIGH DEMAND · HIGH SUPPLY', chartArea.right-8, chartArea.top+6);
+      ctx.textBaseline = 'bottom';
+      ctx.fillText('HIGH DEMAND · LOW SUPPLY', chartArea.right-8, chartArea.bottom-6);
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#B65C3A';
+      ctx.font = '700 10.5px Space Grotesk';
+      ctx.fillText('LOW DEMAND · LOW SUPPLY', chartArea.left+8, chartArea.bottom-6);
+      ctx.restore();
+    }
+  },{
+    id: 'labels',
+    afterDatasetsDraw(chart){
+      const {ctx} = chart;
+      chart.data.datasets[0].data.forEach((d, i) => {
+        if (!d.highlight) return;
+        const meta = chart.getDatasetMeta(0).data[i];
+        ctx.save();
+        ctx.font = 'bold 11px Space Grotesk';
+        ctx.fillStyle = '#1E2421';
+        ctx.textAlign = 'center';
+        ctx.fillText(d.name, meta.x, meta.y - meta.options.radius - 6);
+        ctx.restore();
+      });
+    }
+  }]
+});
+
+// Full table
+const tableEl = document.getElementById('full-table');
+let tHtml = '<tr><th>Region</th><th>Population (2025)</th><th>Youth share (2024)</th><th>Programmes (2026)</th><th>HE programme share</th><th>Natural growth /1,000 (2025)</th><th>Net migration</th></tr>';
+[...REGION_DATA].sort((a,b) => b.heShare - a.heShare).forEach(d => {
+  const netColor = d.net >= 0 ? '#1F5C4F' : '#B65C3A';
+  const growthColor = d.growth >= 0 ? '#1F5C4F' : '#B65C3A';
+  tHtml += `<tr><td>${d.name}</td><td>${d.pop.toLocaleString()}</td><td>${d.youth}%</td><td>${d.programmes}</td><td>${d.heShare}%</td><td style="color:${growthColor};">${d.growth>0?'+':''}${d.growth}</td><td style="color:${netColor};font-weight:600;">${d.net>0?'+':''}${d.net.toLocaleString()}</td></tr>`;
+});
+tableEl.innerHTML = tHtml;
+
+// Sortable table: click a header to sort by that column, click again to reverse.
+// Numeric-looking cells (with %, commas, +/-) sort numerically; everything else sorts as text.
+function makeSortable(tableId){
+  const table = document.getElementById(tableId);
+  if (!table) return;
+  const headRow = table.rows[0];
+  Array.from(headRow.cells).forEach((th, colIdx) => {
+    th.innerHTML += ' <span class="sort-arrow">↕</span>';
+    th.addEventListener('click', () => {
+      const rows = Array.from(table.rows).slice(1);
+      const asc = th.dataset.sortDir !== 'asc';
+      const parse = (text) => {
+        const cleaned = text.replace(/[,%+]/g, '').trim();
+        const num = parseFloat(cleaned);
+        return isNaN(num) ? text.toLowerCase() : num;
+      };
+      rows.sort((a, b) => {
+        const av = parse(a.cells[colIdx].textContent);
+        const bv = parse(b.cells[colIdx].textContent);
+        if (av < bv) return asc ? -1 : 1;
+        if (av > bv) return asc ? 1 : -1;
+        return 0;
+      });
+      rows.forEach(r => table.tBodies[0] ? table.tBodies[0].appendChild(r) : table.appendChild(r));
+      Array.from(headRow.cells).forEach(h => { h.classList.remove('sort-active'); h.dataset.sortDir=''; });
+      th.classList.add('sort-active');
+      th.dataset.sortDir = asc ? 'asc' : 'desc';
+      th.querySelector('.sort-arrow').textContent = asc ? '↑' : '↓';
+    });
+  });
+}
+makeSortable('full-table');
+
+</script>
+</body>
+</html>

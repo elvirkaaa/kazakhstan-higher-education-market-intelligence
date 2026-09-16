@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Data &amp; Method — Kazakhstan Education &amp; Migration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+
+
+<style>
+/* ===== Data pipeline ===== */
+.pipeline{margin:40px 0 20px;}
+.pipe-step{display:flex;align-items:flex-start;gap:24px;padding:18px 0;position:relative;}
+.pipe-step:not(:last-child)::after{content:'';position:absolute;left:29px;top:56px;bottom:-18px;width:1px;background:var(--border);}
+.pipe-marker{width:60px;height:60px;border:2px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:"Space Grotesk";font-weight:700;font-size:13px;background:var(--paper);z-index:1;}
+.pipe-marker.emphasis{border-color:var(--forest);color:var(--forest);background:#fff;}
+.pipe-body{padding-top:6px;}
+.pipe-label{font-family:"Space Grotesk";font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--terracotta);font-weight:700;margin-bottom:4px;}
+.pipe-title{font-family:"Space Grotesk";font-size:20px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.pipe-title .num{color:var(--forest);}
+.pipe-detail{font-size:13.5px;color:var(--ink-soft);line-height:1.5;max-width:560px;}
+
+/* ===== Data sources matrix ===== */
+.source-matrix{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin:24px 0;}
+.source-cell{background:var(--paper);padding:18px 16px;}
+.source-cell.header{background:var(--ink);color:#fff;font-family:"Space Grotesk";font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;}
+.source-cell .cat{font-family:"Space Grotesk";font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--terracotta);font-weight:700;margin-bottom:6px;}
+.source-cell .ds{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.source-cell .meta{font-size:11.5px;color:var(--ink-soft);line-height:1.6;}
+@media (max-width:820px){.source-matrix{grid-template-columns:1fr;}}
+
+/* ===== Data challenges ===== */
+.challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin:24px 0;}
+.challenge-cell{background:#fff;padding:26px 24px;}
+.challenge-num{font-family:"Space Grotesk";font-size:28px;font-weight:700;color:var(--border);margin-bottom:10px;}
+.challenge-title{font-family:"Space Grotesk";font-size:15px;font-weight:600;color:var(--ink);margin-bottom:10px;}
+.challenge-res-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--forest);font-weight:700;margin-bottom:3px;}
+.challenge-res{font-size:13px;color:var(--ink-soft);}
+@media (max-width:760px){.challenge-grid{grid-template-columns:1fr;}}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">Kazakhstan<span class="sub">Education &amp; Migration</span></div>
+  <nav>
+    <a href="index.html"><span class="num">01</span>Overview</a>
+    <a href="higher-education.html"><span class="num">02</span>Education Supply</a>
+    <a href="internationalisation.html"><span class="num">03</span>Internationalisation</a>
+    <a href="demographics.html"><span class="num">04</span>Demographic Demand</a>
+    <a href="cross-analysis.html"><span class="num">05</span>Supply × Demand</a>
+    <a href="findings.html"><span class="num">06</span>Strategic Implications</a>
+  </nav>
+  <div class="foot">
+    <div class="foot-label">Appendix</div>
+    <a href="data-method.html">Data &amp; Methods</a>
+    <a href="methodology.html">Data Quality &amp; Methodology</a>
+    <a href="sources.html">Sources</a>
+    <a href="about.html">About</a>
+  </div>
+</div>
+
+<div class="main">
+  <div class="eyebrow">Data &amp; Method</div>
+  <h1 class="page-title" style="font-size:42px;">From raw records to an analytical dataset</h1>
+  <p class="lede">The project combines datasets that were collected for different purposes, recorded at different geographic levels, and measured using non-equivalent definitions.</p>
+  <div class="meta-line">Covers: WP1-WP3 · This page documents how, not just what</div>
+
+  <h2 class="section-title"><span class="section-num">01 · Pipeline</span>How 8,530 raw records became an analytical dataset</h2>
+  <div class="pipeline">
+    <div class="pipe-step">
+      <div class="pipe-marker">8,530</div>
+      <div class="pipe-body">
+        <div class="pipe-label">Raw Data</div>
+        <div class="pipe-title">Programme registration records</div>
+        <div class="pipe-detail">One row per registration <em>event</em>, not per programme — the OPVO/EPVO export includes re-registrations, price updates, and status changes for the same underlying programme.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-marker">?</div>
+      <div class="pipe-body">
+        <div class="pipe-label">Data Audit</div>
+        <div class="pipe-title">Duplicates, missing fields, inconsistent pricing</div>
+        <div class="pipe-detail">1,304 groups contained more than one row for what was clearly the same programme. 13 institutions showed zero price variance across their entire catalogue — flagged as ambiguous (genuine flat fee vs. unpopulated field), not resolved by assumption.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-marker emphasis">3×</div>
+      <div class="pipe-body">
+        <div class="pipe-label">Deduplication</div>
+        <div class="pipe-title">Grouping key: University <span class="num">+</span> Programme Code <span class="num">+</span> Degree Level</div>
+        <div class="pipe-detail">This exact key was chosen because it reproduced the total already independently confirmed in the official WP1 report tables — not an arbitrary threshold picked to look clean.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-marker emphasis">2,417</div>
+      <div class="pipe-body">
+        <div class="pipe-label">Result</div>
+        <div class="pipe-title">Distinct programmes</div>
+        <div class="pipe-detail">A 71.7% reduction from raw rows. <strong>Validation check:</strong> this project's independently-derived count (2,417) was compared against the total stated in the official WP1 regional statistics report — the two figures match exactly, which is the strongest available check given no third-party dataset exists to cross-verify against.</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-marker">📍</div>
+      <div class="pipe-body">
+        <div class="pipe-label">Regional Matching</div>
+        <div class="pipe-title">No native region field — attribution by university city</div>
+        <div class="pipe-detail">The registry records each university, not its region. Region was inferred externally from each university's known home city, then mapped to the current post-2022 administrative structure (15 of 20 regions hold at least one university).</div>
+      </div>
+    </div>
+    <div class="pipe-step">
+      <div class="pipe-marker emphasis">→</div>
+      <div class="pipe-body">
+        <div class="pipe-label">Output</div>
+        <div class="pipe-title">Analytical dataset</div>
+        <div class="pipe-detail">Joined against demographic and mobility datasets for the Cross-Analysis page — each join documented, each mismatch flagged rather than silently resolved.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title"><span class="section-num">02 · Sources</span>Four datasets, four different shapes</h2>
+  <div class="source-matrix">
+    <div class="source-cell header">Category</div>
+    <div class="source-cell header">Dataset</div>
+    <div class="source-cell header">Period</div>
+    <div class="source-cell header">Geographic Level</div>
+
+    <div class="source-cell"><div class="cat">Education</div><div class="ds">OPVO/EPVO Registry</div></div>
+    <div class="source-cell"><div class="meta">2026 snapshot</div></div>
+    <div class="source-cell"><div class="meta">Institution</div></div>
+    <div class="source-cell"><div class="meta">Used for: programme supply, tuition, degree-level mix</div></div>
+
+    <div class="source-cell"><div class="cat">Demography</div><div class="ds">Bureau of National Statistics (BNS)</div></div>
+    <div class="source-cell"><div class="meta">1991-2025</div></div>
+    <div class="source-cell"><div class="meta">Region</div></div>
+    <div class="source-cell"><div class="meta">Used for: births, deaths, age structure, migration</div></div>
+
+    <div class="source-cell"><div class="cat">Internationalisation</div><div class="ds">MSHE RK National Reports, ENIC-Kazakhstan</div></div>
+    <div class="source-cell"><div class="meta">2022-2025</div></div>
+    <div class="source-cell"><div class="meta">Country</div></div>
+    <div class="source-cell"><div class="meta">Used for: exchange, Bolashak, grants, partnerships</div></div>
+
+    <div class="source-cell"><div class="cat">Mobility (cross-check)</div><div class="ds">UNESCO UIS, UN DESA, Migration Data Portal</div></div>
+    <div class="source-cell"><div class="meta">Varies by indicator</div></div>
+    <div class="source-cell"><div class="meta">Country</div></div>
+    <div class="source-cell"><div class="meta">Used for: independent verification of mobility scale</div></div>
+  </div>
+  <div class="source-line" style="font-size:11px;color:var(--warmgrey);">Full citation list with direct links on the Data Sources page.</div>
+
+  <h2 class="section-title"><span class="section-num">03 · Data Challenges</span>Four problems, four resolutions</h2>
+  <div class="challenge-grid">
+    <div class="challenge-cell">
+      <div class="challenge-num">01</div>
+      <div class="challenge-title">Duplicate programme records</div>
+      <div class="challenge-res-label">Resolution</div>
+      <div class="challenge-res">Grouping and deduplication by University + Programme Code + Degree Level (8,530 → 2,417)</div>
+    </div>
+    <div class="challenge-cell">
+      <div class="challenge-num">02</div>
+      <div class="challenge-title">No native region field</div>
+      <div class="challenge-res-label">Resolution</div>
+      <div class="challenge-res">Geographic attribution by university home city, mapped to current administrative regions</div>
+    </div>
+    <div class="challenge-cell">
+      <div class="challenge-num">03</div>
+      <div class="challenge-title">Changing administrative boundaries (2018, 2022 reforms)</div>
+      <div class="challenge-res-label">Resolution</div>
+      <div class="challenge-res">Both boundary versions kept available; one reconstructed from the other transparently, with the reconstruction explicitly labelled</div>
+    </div>
+    <div class="challenge-cell">
+      <div class="challenge-num">04</div>
+      <div class="challenge-title">Non-equivalent mobility indicators</div>
+      <div class="challenge-res-label">Resolution</div>
+      <div class="challenge-res">Analysed separately rather than artificially combined — exchange, full-degree enrolment, and Bolashak scholarships each measure a different population</div>
+    </div>
+    <div class="challenge-cell">
+      <div class="challenge-num">05</div>
+      <div class="challenge-title">Flat/placeholder pricing in the registry</div>
+      <div class="challenge-res-label">Resolution</div>
+      <div class="challenge-res">13 institutions show zero price variance (e.g. Kazakh American Free University: 421 programmes, all KZT 620,000) — flagged as ambiguous rather than assumed either way</div>
+    </div>
+  </div>
+
+  <h3 class="chart-title" style="margin-top:30px;">Registry-level data quality findings</h3>
+  <table class="editorial compact">
+    <tr><th>Issue</th><th>Detail</th><th>Resolution</th></tr>
+    <tr><td>Row-level duplication</td><td>87% of raw rows sat in groups sharing an identical university, classification code, and degree level</td><td>Deduplicated: 8,530 raw records → 2,417 distinct programmes</td></tr>
+    <tr><td>Flat/placeholder pricing</td><td>13 institutions show zero price variance across their entire catalogue</td><td>Flagged as ambiguous — not assumed either way</td></tr>
+    <tr><td>No native region field</td><td>The registry does not record a region for each university</td><td>Region inferred externally from each university's known home city</td></tr>
+  </table>
+
+  <footer class="site-foot">Kazakhstan Higher Education Market Intelligence — prepared for AZM Education · Full methodology detail on the Methodology page.</footer>
+</div>
+</body>
+</html>

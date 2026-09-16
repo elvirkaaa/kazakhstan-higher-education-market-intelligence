@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Methodology &amp; Data Quality — Kazakhstan Education &amp; Migration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+
+
+<style>
+:root{ --pbi-bg:#f3f2f1; --pbi-blue:#118DFF; --pbi-text:#252423; --pbi-border:#e1dfdd; }
+.pbi-frame{background:var(--pbi-bg);border:1px solid var(--pbi-border);padding:16px;font-family:"Segoe UI",Arial,sans-serif;}
+.pbi-frame .pbi-titlebar{font-size:11px;color:#605e5c;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.pbi-frame .pbi-titlebar .pbi-logo{background:var(--pbi-blue);color:#fff;font-weight:700;font-size:9px;padding:2px 6px;}
+.pbi-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:12px;}
+@media (max-width:760px){.pbi-layout{grid-template-columns:1fr;}}
+.pbi-kpi{background:#fff;border:1px solid var(--pbi-border);padding:14px 16px;margin-bottom:12px;}
+.pbi-kpi:last-child{margin-bottom:0;}
+.pbi-kpi .pbi-header{font-size:10px;color:#605e5c;line-height:1.5;margin-bottom:8px;font-family:monospace;}
+.pbi-kpi .pbi-value{font-size:28px;font-weight:700;color:var(--pbi-text);}
+.pbi-kpi .pbi-label{font-size:11px;color:#605e5c;margin-top:2px;}
+.pbi-chart-card{background:#fff;border:1px solid var(--pbi-border);padding:14px 16px;}
+.pbi-chart-card .pbi-chart-title{font-size:12px;font-weight:600;color:var(--pbi-text);margin-bottom:10px;}
+.pbi-sort-row{display:flex;gap:6px;margin-bottom:10px;}
+.pbi-sort-btn{font-size:10px;padding:4px 10px;border:1px solid var(--pbi-border);background:#fff;color:#605e5c;cursor:pointer;}
+.pbi-sort-btn.active{background:var(--pbi-blue);color:#fff;border-color:var(--pbi-blue);}
+#pbi-chart-wrap{height:520px;position:relative;}
+.pbi-detail{margin-top:10px;font-size:11px;background:#f9f9f9;border:1px solid var(--pbi-border);padding:8px 12px;min-height:16px;font-family:"Segoe UI",Arial,sans-serif;}
+.flow-step{display:flex;align-items:center;gap:14px;margin:14px 0;flex-wrap:wrap;}
+.flow-box{background:var(--paper);border:1px solid var(--border);padding:10px 16px;font-size:13px;font-weight:600;color:var(--ink);text-align:center;min-width:150px;font-family:"Space Grotesk";}
+.flow-arrow{color:var(--warmgrey);font-size:16px;}
+.flow-num{font-size:18px;font-weight:700;color:var(--forest);}
+</style>
+
+</head>
+<body>
+<div class="sidebar">
+  <div class="brand">Kazakhstan<span class="sub">Education &amp; Migration</span></div>
+  <nav>
+    <a href="index.html"><span class="num">01</span>Overview</a>
+    <a href="higher-education.html"><span class="num">02</span>Education Supply</a>
+    <a href="internationalisation.html"><span class="num">03</span>Internationalisation</a>
+    <a href="demographics.html"><span class="num">04</span>Demographic Demand</a>
+    <a href="cross-analysis.html"><span class="num">05</span>Supply × Demand</a>
+    <a href="findings.html"><span class="num">06</span>Strategic Implications</a>
+  </nav>
+  <div class="foot">
+    <div class="foot-label">Appendix</div>
+    <a href="data-method.html">Data &amp; Methods</a>
+    <a href="methodology.html">Data Quality &amp; Methodology</a>
+    <a href="sources.html">Sources</a>
+    <a href="about.html">About</a>
+  </div>
+</div>
+
+<div class="main">
+  <div class="eyebrow">Methodology &amp; Data Quality — Research Appendix</div>
+  <h1 class="page-title" style="font-size:36px;">How reliable and comparable are these datasets?</h1>
+  <p class="lede" style="font-size:16px;">Deduplication logic, region boundary versioning, and every place this project's numbers required a judgment call.</p>
+  <div class="meta-line">Covers: WP1-WP3 · Last reviewed against source repository: Aug 2026</div>
+
+  <div class="finding-strip">
+    <div class="label">Key finding</div>
+    <p>The two largest data-integrity risks in this project — programme duplication in the OPVO/EPVO registry and regional double-counting across Kazakhstan's 2022 administrative boundary reform — were both identified and corrected before use, and are documented here rather than hidden.</p>
+  </div>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Research Framework</span>How each question was actually answered</h2>
+  <p class="chart-desc">The analytical backbone of the project — every question this site answers, the dataset behind it, the method used, what it actually outputs, and its stated limitation.</p>
+  <table class="editorial compact">
+    <tr><th>Research question</th><th>Dataset</th><th>Method</th><th>Output</th><th>Limitation</th></tr>
+    <tr><td>Where is HE supply concentrated?</td><td>OPVO/EPVO registry (8,530 raw records)</td><td>Deduplication (code+university+level), regional aggregation, HHI</td><td>Regional &amp; institutional supply share</td><td>Programme counts are not enrolments or capacity</td></tr>
+    <tr><td>How does internationalisation work?</td><td>CIS mobility report, MSHE RK infographic, National Report on HE</td><td>Channel-specific analysis (exchange / full-degree / Bolashak kept separate)</td><td>Inbound/outbound/mobility patterns by channel</td><td>Populations, years, and definitions differ across channels</td></tr>
+    <tr><td>Where is demographic demand changing?</td><td>BNS births/deaths/migration tables, TALDAU age structure</td><td>Time-series (1991-2025) and regional comparison (per-1,000 rates)</td><td>Growth and youth-concentration patterns by region</td><td>0-15 youth share is a proxy, not university-age demand</td></tr>
+    <tr><td>Does supply align with demand?</td><td>Merged regional supply + demographic tables</td><td>Median-threshold quadrant classification, Pearson/Spearman correlation, z-score alignment index</td><td>Supply-demand divergence by region, 6 gap candidates</td><td>Spatial co-occurrence only — not demonstrated causation</td></tr>
+    <tr><td>What can the evidence support?</td><td>All validated outputs above</td><td>Research synthesis (evidence → implication, explicit limitation)</td><td>Evidence-based strategic implications</td><td>No forecasts beyond what the underlying data supports</td></tr>
+  </table>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Analytical Taxonomy</span>What kind of claim is this?</h2>
+  <p class="chart-desc">Every statement on this site falls into one of six categories. Confusing them — presenting an interpretation as a fact, or a hypothesis as a recommendation — is the most common way analysis overstates itself. One worked example per category, using real numbers from this project:</p>
+  <table class="editorial compact">
+    <tr><th>Category</th><th>Definition</th><th>Example from this project</th></tr>
+    <tr><td><strong>Observed fact</strong></td><td>Directly measured, in the source data, no calculation required</td><td>"Births fell from 445,875 (2021) to 335,005 (2025)" — read directly from BNS tables</td></tr>
+    <tr><td><strong>Derived metric</strong></td><td>Calculated from observed facts using a defined, checkable formula</td><td>"Regional HHI = 5,176" — sum of squared regional programme shares</td></tr>
+    <tr><td><strong>Interpretation</strong></td><td>What a derived metric plausibly means, stated with its own caveat</td><td>"The market is more geographically concentrated than institutionally concentrated" — a reading of the HHI comparison, not a new measurement</td></tr>
+    <tr><td><strong>Hypothesis</strong></td><td>An untested explanation the data cannot itself confirm or rule out</td><td>"Almaty may serve demand drawn from other regions" — plausible, but would require student origin data this project does not have</td></tr>
+    <tr><td><strong>Recommendation</strong></td><td>A suggested next action, explicitly downstream of the evidence, never stated as certain</td><td>"Monitor the six above-median-youth, below-median-supply regions for further investigation" — action framed as a next step, not a conclusion</td></tr>
+    <tr><td><strong>Limitation</strong></td><td>A stated boundary on what the data or method can support</td><td>"This dataset cannot show that migrants are students, or that they migrated for education-related reasons at all"</td></tr>
+  </table>
+  <p class="note-inline">This taxonomy is applied throughout the site via consistent phrasing — "this may indicate," "this does not show," "a plausible hypothesis" — rather than a label on every sentence. The Supply × Demand and Strategic Implications pages make the heaviest use of the distinction.</p>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Case Study 01</span>Regional boundary versioning in Power BI</h2>
+  <p class="chart-desc">Kazakhstan's regional migration data spans two administrative structures: pre-2022 (14-17 units) and post-2022 (20 regions). Early in Power BI model-building, before a region crosswalk was applied, migration values from both boundary versions were loaded side by side — meaning several regions were counted twice under two different names.</p>
+  <div class="note-inline caution">This is a real intermediate state from this project's own Power BI work, reproduced here with its actual values (not illustrative placeholder data) — including the exact figures for Abay (-9,856), Akmola (+292), and Aktobe (-4,216) that first revealed the problem.</div>
+
+  <h3 class="chart-title" style="margin-top:30px;">Recreated Power BI view — before the fix</h3>
+  <p class="chart-desc">Interactive recreation of the report page as it appeared before the Region_Crosswalk table was applied.</p>
+  <div class="pbi-frame">
+    <div class="pbi-titlebar"><span class="pbi-logo">Power BI</span> Migration_Analysis_Draft.pbix — Regions_Gaining by Region_Name (before crosswalk fix)</div>
+    <div class="pbi-layout">
+      <div>
+        <div class="pbi-kpi">
+          <div class="pbi-header">post_2022<br>NEW_ABAY Abay<br>2024/2025 (exact year unstated in BNS source)</div>
+          <div class="pbi-value">-10 тыс.</div>
+          <div class="pbi-label">Сумма Regions_Gaining</div>
+        </div>
+        <div class="pbi-kpi">
+          <div class="pbi-header">post_2022<br>NEW_AKMOLA Akmola<br>2024/2025 (exact year unstated in BNS source)</div>
+          <div class="pbi-value">292</div>
+          <div class="pbi-label">Сумма Regions_Gaining</div>
+        </div>
+        <div class="pbi-kpi">
+          <div class="pbi-header">post_2022<br>NEW_AKTOBE Aktobe<br>2024/2025 (exact year unstated in BNS source)</div>
+          <div class="pbi-value">-4 тыс.</div>
+          <div class="pbi-label">Сумма Regions_Gaining</div>
+        </div>
+      </div>
+      <div class="pbi-chart-card">
+        <div class="pbi-chart-title">Сумма Regions_Gaining по Region_Name</div>
+        <div class="pbi-sort-row">
+          <button class="pbi-sort-btn active" id="sort-desc">Descending</button>
+          <button class="pbi-sort-btn" id="sort-asc">Ascending</button>
+          <button class="pbi-sort-btn" id="sort-alpha">Alphabetical</button>
+        </div>
+        <div id="pbi-chart-wrap"><canvas id="pbi-chart"></canvas></div>
+        <div class="pbi-detail" id="pbi-detail">Click a bar for its exact value and boundary version.</div>
+      </div>
+    </div>
+  </div>
+  <div class="gap-note" style="margin-top:14px;"><strong>Why the totals look wrong on purpose.</strong> Summing every bar in this view gives +64,297 — not the ~0 that internal migration should net to nationally. That non-zero sum is itself the diagnostic signal: several regions appear twice, once under each boundary version's naming convention.</div>
+
+  <h3 class="chart-title" style="margin-top:36px;">The fix: Region_Crosswalk</h3>
+  <p class="chart-desc">A dedicated crosswalk table mapping every historical/alternate region name to a single canonical <code>ADM1_EN</code> identity, joined via Power Query before any aggregation.</p>
+  <div class="flow-step">
+    <div class="flow-box">Raw migration table<br><span class="flow-num">27 labels</span></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Region_Crosswalk join<br>(ADM1_PCODE / ADM1_EN)</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Canonical regions<br><span class="flow-num">20 or 14</span></div>
+  </div>
+  <p class="note-inline">The corrected data — used throughout the Regional Migration and Cross-Analysis pages — nets to exactly 0 for both boundary structures, confirming no region is double-counted.</p>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Definitions</span>Key terms used across this project</h2>
+  <p class="note-inline">The other major data-integrity case — programme deduplication in the OPVO/EPVO registry (8,530 raw records → 2,417 distinct programmes) — is documented in full on the <a href="data-method.html" style="color:var(--forest);" >Data &amp; Methods</a> page, to avoid telling the same story twice.</p>
+  <table class="editorial compact">
+    <tr><th>Term</th><th>Definition used</th><th>Where used</th></tr>
+    <tr><td>"International students" (35,057)</td><td>Foreign citizens in full-degree programmes, current academic year, per MSHE RK — source does not confirm exchange students are excluded</td><td>Overview, Internationalisation</td></tr>
+    <tr><td>"Bolashak (cumulative)" (12,727)</td><td>Total graduates since founding through 31 Dec 2024 — not annual</td><td>Overview, Internationalisation</td></tr>
+    <tr><td>"Net migration"</td><td>Total population movement, all ages/purposes — not student migration specifically</td><td>Regional Migration, Cross-Analysis</td></tr>
+    <tr><td>"HE programme supply"</td><td>Count of distinct degree programmes registered — not enrolment or capacity</td><td>Higher Education, Cross-Analysis</td></tr>
+  </table>
+
+  <h2 class="section-title" style="font-size:24px;"><span class="section-num">Known Limitations</span>Across this project</h2>
+  <div class="split-50-50">
+    <ul style="font-size:13px;line-height:1.85;padding-left:18px;margin:0;color:var(--ink-soft);">
+      <li>~15 of 2,417 programmes (0.6%) are not attributed to a specific city</li>
+      <li>Reference year for interregional migration is inferred, not stated in source</li>
+      <li>No source tracks where in Kazakhstan foreign students study</li>
+    </ul>
+    <ul style="font-size:13px;line-height:1.85;padding-left:18px;margin:0;color:var(--ink-soft);">
+      <li>Official sources disagree on CIS-vs-Asia origin totals for 2024: one infographic states CIS 17,816 / Asia 17,788; the National Report's chart states CIS 15,816 / Asia 17,456; its narrative text states CIS 12,816 — three figures across publications by the same ministry, all preserved rather than reconciled</li>
+      <li>Bolashak level-breakdown sums to 143 fewer than the cumulative total</li>
+      <li>13 institutions show zero tuition variance — flat fee vs. unpopulated field is unresolvable</li>
+    </ul>
+  </div>
+
+  <footer class="site-foot">Kazakhstan Higher Education Market Intelligence — prepared for AZM Education · All figures sourced; see Data Sources.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+const PBI_DATA = [
+  {name:"Aqmola", val:87751, ver:"pre_2022_aggregated"}, {name:"Astana", val:87459, ver:"post_2022"},
+  {name:"Almaty city", val:33126, ver:"post_2022"}, {name:"Almaty", val:32218, ver:"pre_2022_aggregated"},
+  {name:"Shymkent", val:15130, ver:"post_2022"}, {name:"Almaty Region", val:12110, ver:"post_2022"},
+  {name:"Akmola", val:292, ver:"post_2022"}, {name:"Mangystau", val:-2672, ver:"post_2022"},
+  {name:"Mangystau Region", val:-2672, ver:"post_2022_alt_label"}, {name:"Ulytau", val:-3965, ver:"post_2022"},
+  {name:"Aktobe", val:-4216, ver:"post_2022"}, {name:"Aqtöbe", val:-4216, ver:"pre_2022_aggregated"},
+  {name:"Kostanay", val:-4499, ver:"post_2022"}, {name:"East Kazakhstan", val:-4248, ver:"post_2022"},
+  {name:"West Kazakhstan", val:-4989, ver:"post_2022"}, {name:"Atyrau", val:-5424, ver:"post_2022"},
+  {name:"Karaganda", val:-5387, ver:"post_2022"}, {name:"North Kazakhstan", val:-6441, ver:"post_2022"},
+  {name:"Pavlodar", val:-7661, ver:"post_2022"}, {name:"Qaraghandy", val:-9352, ver:"pre_2022_aggregated"},
+  {name:"Abay", val:-9856, ver:"post_2022"}, {name:"Kyzylorda", val:-11913, ver:"post_2022"},
+  {name:"Qyzylorda", val:-11913, ver:"pre_2022_aggregated"}, {name:"Zhetisu", val:-13018, ver:"post_2022"},
+  {name:"South Kazakhstan", val:-27519, ver:"pre_2022_aggregated"}, {name:"Zhambyl", val:-21179, ver:"post_2022"},
+  {name:"Turkistan", val:-42649, ver:"post_2022"}
+];
+
+let sortMode = 'desc';
+let chart = null;
+function sortedData(){
+  const d = [...PBI_DATA];
+  if (sortMode === 'desc') d.sort((a,b) => b.val - a.val);
+  else if (sortMode === 'asc') d.sort((a,b) => a.val - b.val);
+  else d.sort((a,b) => a.name.localeCompare(b.name));
+  return d;
+}
+function verLabel(ver){
+  if (ver === 'pre_2022_aggregated') return 'Pre-2022 boundary version';
+  if (ver === 'post_2022_alt_label') return 'Post-2022, alternate label (duplicate)';
+  return 'Post-2022 boundary version';
+}
+
+function renderChart(){
+  const data = sortedData();
+  const ctx = document.getElementById('pbi-chart');
+  if (chart) chart.destroy();
+  chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: data.map(d => d.name),
+      datasets: [{
+        data: data.map(d => d.val),
+        backgroundColor: data.map(d => d.val >= 0 ? '#118DFF' : '#c7e0f4'),
+        borderColor: data.map(d => d.val >= 0 ? '#0d6ecf' : '#a6c9e2'),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: {display:false},
+        tooltip: {
+          callbacks: {
+            label: function(ctx){
+              const d = data[ctx.dataIndex];
+              const dir = d.val >= 0 ? 'Net migration gain' : 'Net migration loss';
+              return [`${d.val.toLocaleString()} (${dir})`, verLabel(d.ver)];
+            }
+          }
+        }
+      },
+      scales: {
+        x: {title:{display:true, text:'Сумма Regions_Gaining', font:{size:10}}, ticks:{font:{size:9}}},
+        y: {ticks:{font:{size:9}}}
+      },
+      onClick: function(evt, elements){
+        if (!elements.length) return;
+        const idx = elements[0].index;
+        const d = data[idx];
+        const dir = d.val >= 0 ? 'Net migration gain' : 'Net migration loss';
+        document.getElementById('pbi-detail').innerHTML = `<strong>${d.name}</strong>: ${d.val.toLocaleString()} — ${dir} — ${verLabel(d.ver)}`;
+      }
+    }
+  });
+}
+renderChart();
+
+document.getElementById('sort-desc').addEventListener('click', function(){
+  sortMode='desc'; this.classList.add('active');
+  document.getElementById('sort-asc').classList.remove('active');
+  document.getElementById('sort-alpha').classList.remove('active');
+  renderChart();
+});
+document.getElementById('sort-asc').addEventListener('click', function(){
+  sortMode='asc'; this.classList.add('active');
+  document.getElementById('sort-desc').classList.remove('active');
+  document.getElementById('sort-alpha').classList.remove('active');
+  renderChart();
+});
+document.getElementById('sort-alpha').addEventListener('click', function(){
+  sortMode='alpha'; this.classList.add('active');
+  document.getElementById('sort-desc').classList.remove('active');
+  document.getElementById('sort-asc').classList.remove('active');
+  renderChart();
+});
+
+</script>
+</body>
+</html>
