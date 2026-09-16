@@ -101,6 +101,22 @@ Planned analyses include:
 
 ---
 
+[Unreleased] — Dashboard: WP1–WP3 + Cross-Analysis
+Added
+Interactive dashboard (dashboards/) covering Education Supply, Internationalisation, Demographic Demand, and Supply × Demand cross-analysis
+Regional Alignment Index: a z-score-based screening indicator comparing demographic demand and recorded programme supply across all 20 regions
+Key Findings page: six findings structured as Finding → Evidence → Interpretation → Limitation
+Sortable data tables (regional comparison, university list, subject-area breakdown)
+Changed
+Corrected Regional HHI calculation (was 6,008, verified correct value is 5,176)
+Flagged institutional HHI as not calculable from currently available data (partial 11-of-46 university dataset), rather than reporting an unverifiable figure
+Separated the 35,057 international-student total from the five-country origin breakdown (17,282) pending source reconciliation — the relationship between these two figures has not been confirmed
+Known limitations
+WP4 (Labour Market) and WP5 (Strategic Assessment) not yet started — no salary, employment, or vacancy data currently available
+Full institutional-level programme data available for 11 of 46 universities only
+No regional or subject-level tuition breakdown available
+
+
 ### Final Deliverable
 
 The completed project will integrate all research modules into the **Kazakhstan Higher Education Market Intelligence** knowledge base.

@@ -14,6 +14,25 @@ Rather than presenting isolated datasets, the project integrates multiple source
 
 ---
 
+Interactive Dashboard
+
+View the live dashboard →
+
+The primary output of this project is an interactive, browser-based market intelligence dashboard covering the completed work packages (WP1–WP3) and the cross-analysis that connects them:
+
+Overview — the central research question and headline findings
+Education Supply — regional and institutional concentration of Kazakhstan's higher-education programme registry (2,417 distinct programmes, deduplicated and verified from 8,530 raw records; regional HHI; subject-area and tuition breakdowns)
+Internationalisation — inbound, outbound, and Bolashak scholarship mobility, kept as separate, non-equivalent channels rather than one combined figure
+Demographic Demand — national and regional population trends, natural growth, and youth concentration
+Supply × Demand — the project's central cross-analysis: correlation testing and a Regional Alignment Index comparing where education supply is concentrated against where demographic demand is growing
+Key Findings — six findings, each broken into Finding → Evidence → Interpretation → Limitation
+Appendix — full data pipeline, methodology, data-quality notes, and sources
+
+The dashboard is built with vanilla HTML/CSS/JavaScript, D3.js, and Chart.js — no build step required. Open dashboards/index.html directly in a browser, or see Getting Started below for local setup.
+
+Note: WP4 (Labour Market) and WP5 (Strategic Assessment) are not yet reflected in the dashboard — they require additional data collection before they can be included (see Repository Status).
+
+
 ## Research Objectives
 
 The project focuses on answering several key questions:
